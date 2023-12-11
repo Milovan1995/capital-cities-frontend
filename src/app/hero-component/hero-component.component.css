@@ -6,6 +6,38 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background:url("../../assets/images/globeBackgroundUniverse.jpg");
-  color: white;
+  background: url("../../assets/images/globeBackgroundUniverse.jpg");
+  color: #ddf2fd;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin: 0;
 }
+.container h1{
+    font-size: 4rem;
+}
+div.container .leftSide {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15rem;
+}
+
+/* tamnija do svjetlije boje: ##03051d , 000724  #011334  032854  014f8d  117ebc
+*/
+
+/* paleta koju sajt daje na ovo: 
+#041331   
+#5f9ed1
+#267eb7
+#105a90
+#a4c8ea mozda slova
+#083965
+#075c73 zelenkasta
+#8494c8 rozkasta 
+#3c4d72 tamno sivo rozo nesto
+
+DDF2FD mozda slova ?
+ */
