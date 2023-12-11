@@ -1,0 +1,17 @@
+.container {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+  width: 100%;
+  margin: 0;
+  height: 100%;
+}
+.container span {
+  color: var(--secondTextColor);
+}
+.container a {
+  background-color: var(--linkColor);
+}
+.container a:hover {
+  background-color: var(--secondTextColor);
+  color: var(--textColor);
+}

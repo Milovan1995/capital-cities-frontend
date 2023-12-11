@@ -1,60 +1,33 @@
-.container {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("../../assets/images/globeBackgroundUniverse.jpg");
-  color: #ddf2fd;
-  display: flex;
-  flex-direction: row;
-  gap: 0;
-  margin: 0;
-}
-@media screen and (max-width: 768px) {
-  .container {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    justify-content: center;
-    align-items: center;
-  }
-  div.container .leftSide {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 2rem;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.container h1 {
-  font-size: 4.5rem;
-}
-div.container .leftSide {
-  width: 50%;
+div.container {
+  background-color: var(--bgColor);
+  color: var(--textColor);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  margin-top: 11rem;
 }
+.container h1 {
+  text-align: center;
+  font-size: 7rem;
+}
+.container span {
+  color: var(--secondTextColor);
+  font-size: 2rem;
+}
+/* .container a {
+  background-color: var(--linkColor);
+}
+.container a:hover {
+  background-color: var(--secondTextColor);
+  color: var(--textColor);
+} */
 
 /* tamnija do svjetlije boje: ##03051d , 000724  #011334  032854  014f8d  117ebc
 */
 
 /* paleta koju sajt daje na ovo: 
 #041331   
+background-color: #aee5ec;
 #5f9ed1
 #267eb7
 #105a90

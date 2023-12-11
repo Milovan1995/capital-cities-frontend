@@ -1,23 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@400;700&display=swap");
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Roboto", sans-serif;
-  text-transform: capitalize;
+:root {
+  --bgColor: #c2d9ff;
+  --textColor: #190482;
+  --secondTextColor: #8e8ffa;
+  --linkColor: #7752fe;
 }
-p,
-span,
-div,
-ul,
-ol,
-li,
-section,
-header,
-footer,
+body {
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+span {
+  color: var(--secondTextColor);
+}
 a {
-  font-family: "Montserrat",serif;
+  background-color: var(--linkColor);
+}
+a:hover {
+  background-color: var(--secondTextColor);
+  color: var(--textColor);
 }
