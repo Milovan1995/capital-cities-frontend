@@ -6,8 +6,11 @@
   --linkColor: #7752fe;
 }
 body {
-  background-color: var(--bgColor);
   color: var(--textColor);
+  text-align: center;
+  background: url("../src/assets/images/lightBluishPattern.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 span {
   color: var(--secondTextColor);

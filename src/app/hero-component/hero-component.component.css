@@ -1,17 +1,7 @@
-div.container {
-  background-color: var(--bgColor);
-  color: var(--textColor);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.container h1 {
-  text-align: center;
+h1 {
   font-size: 7rem;
 }
-.container span {
-  color: var(--secondTextColor);
+span {
   font-size: 2rem;
 }
 /* .container a {
