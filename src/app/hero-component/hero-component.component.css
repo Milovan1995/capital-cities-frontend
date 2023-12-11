@@ -1,12 +1,4 @@
-h1 {
-  font-size: 7rem;
-  margin-top: 15%;
-}
-span {
-  font-size: 2rem;
-}
-
-@keyframes fadeIn {
+@keyframes slideAndFadeIn {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -16,16 +8,33 @@ span {
     transform: translateY(0);
   }
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 #title {
   opacity: 0;
   font-size: 7rem; /* Adjust the size as needed */
-  animation: fadeIn 1s ease-out forwards;
+  animation: slideAndFadeIn 1s ease-out forwards;
   color: var(--linkColor);
 }
 
 #subtitle {
   font-size: 2rem;
   animation: fadeIn 2s ease-in forwards;
-  color: var(--linkColor);
+  display: block;
+}
+
+.mainPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 200px;
 }
