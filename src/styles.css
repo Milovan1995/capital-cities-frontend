@@ -1,19 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --bgColor: #c2d9ff;
-  --textColor: #190482;
+  --bgColor: #fefefe;
+  --linkColor: #190482;
   --secondTextColor: #8e8ffa;
-  --linkColor: #7752fe;
+  --textColor: #d5e3e3;
 }
 body {
   color: var(--textColor);
   text-align: center;
-  background: url("../src/assets/images/lightBluishPattern.avif");
+  background-color: var(--bgColor);
+  background: url("../src/assets/images/backgroundPatternLines.jpg");
+  overflow-x: hidden;
   background-size: cover;
   background-repeat: no-repeat;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 span {
-  color: var(--secondTextColor);
+  color: var(--textColor);
 }
 a {
   background-color: var(--linkColor);

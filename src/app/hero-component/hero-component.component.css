@@ -1,31 +1,31 @@
 h1 {
   font-size: 7rem;
+  margin-top: 15%;
 }
 span {
   font-size: 2rem;
 }
-/* .container a {
-  background-color: var(--linkColor);
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.container a:hover {
-  background-color: var(--secondTextColor);
-  color: var(--textColor);
-} */
 
-/* tamnija do svjetlije boje: ##03051d , 000724  #011334  032854  014f8d  117ebc
-*/
+#title {
+  opacity: 0;
+  font-size: 7rem; /* Adjust the size as needed */
+  animation: fadeIn 1s ease-out forwards;
+  color: var(--linkColor);
+}
 
-/* paleta koju sajt daje na ovo: 
-#041331   
-background-color: #aee5ec;
-#5f9ed1
-#267eb7
-#105a90
-#a4c8ea mozda slova
-#083965
-#075c73 zelenkasta
-#8494c8 rozkasta 
-#3c4d72 tamno sivo rozo nesto
-
-DDF2FD mozda slova ?
- */
+#subtitle {
+  font-size: 2rem;
+  animation: fadeIn 2s ease-in forwards;
+  color: var(--linkColor);
+}
