@@ -4,8 +4,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: url("../../assets/images/globeBackgroundUniverse.jpg");
   color: #ddf2fd;
   display: flex;
@@ -13,8 +13,33 @@
   gap: 0;
   margin: 0;
 }
-.container h1{
-    font-size: 4rem;
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  div.container .leftSide {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.container h1 {
+  font-size: 4.5rem;
 }
 div.container .leftSide {
   width: 50%;
@@ -22,7 +47,7 @@ div.container .leftSide {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 15rem;
+  margin-top: 11rem;
 }
 
 /* tamnija do svjetlije boje: ##03051d , 000724  #011334  032854  014f8d  117ebc
