@@ -1,8 +1,8 @@
 :root {
   --bgColor: #fefefe;
-  --linkColor: #190482;
+  --textColor: #190482;
   --secondTextColor: #8e8ffa;
-  --textColor: #d5e3e3;
+  --linkColor: #d5e3e3;
 }
 body {
   box-sizing: border-box;
@@ -15,7 +15,7 @@ body {
   margin: 0;
 }
 span {
-  color: var(--linkColor);
+  color: var(--secondTextColor);
 }
 a {
   background-color: var(--linkColor);

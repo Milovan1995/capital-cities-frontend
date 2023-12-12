@@ -19,14 +19,16 @@
 
 #title {
   opacity: 0;
-  font-size: 7rem; /* Adjust the size as needed */
+  font-size: 10rem; /* Adjust the size as needed */
   animation: slideAndFadeIn 1s ease-out forwards;
-  color: var(--linkColor);
+  color: var(--textColor);
+  font-family: fantasy;
 }
 
 #subtitle {
   font-size: 2rem;
   animation: fadeIn 2s ease-in forwards;
+  color: var(--textColor);
   display: block;
 }
 
@@ -37,4 +39,9 @@
   justify-content: center;
   align-items: center;
   padding-bottom: 200px;
+}
+.copyright {
+  position: absolute;
+  bottom: 20px;
+  color: var(--textColor);
 }
