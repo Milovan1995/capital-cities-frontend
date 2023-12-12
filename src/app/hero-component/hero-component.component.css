@@ -22,7 +22,7 @@
   font-size: 10rem; /* Adjust the size as needed */
   animation: slideAndFadeIn 1s ease-out forwards;
   color: var(--textColor);
-  font-family: fantasy;
+  font-family: "Audiowide", sans-serif;
 }
 
 #subtitle {
