@@ -79,14 +79,3 @@
 #heroBtn:hover {
   scale: 1.05;
 }
-@keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
-}
-.slideLeftAnimation {
-  animation: slideLeft 2s ease-in forwards;
-}
