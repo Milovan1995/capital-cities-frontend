@@ -65,7 +65,7 @@
 }
 #heroBtn {
   animation: fadeInWithDelay 4s ease-in forwards;
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(254, 254, 254, 0.08);
   color: var(--textColor);
   margin-top: 6rem;
   font-family: "Audiowide";
