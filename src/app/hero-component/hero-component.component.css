@@ -16,10 +16,21 @@
     opacity: 1;
   }
 }
+@keyframes fadeInWithDelay {
+  0%,
+  90% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 #title {
   opacity: 0;
-  font-size: 10rem; /* Adjust the size as needed */
+  font-size: 8rem; /* Adjust the size as needed */
   animation: slideAndFadeIn 1s ease-out forwards;
   color: var(--textColor);
   font-family: "Audiowide", sans-serif;
@@ -31,7 +42,14 @@
   color: var(--textColor);
   display: block;
 }
-
+#descriptionSpan {
+  text-align: center;
+  width: 50%;
+  margin: 6rem auto 2rem auto;
+  font-size: 2rem;
+  animation: fadeIn 3s ease-in forwards;
+  color: var(--textColor);
+}
 .mainPage {
   height: 100vh;
   display: flex;
@@ -44,4 +62,20 @@
   position: absolute;
   bottom: 20px;
   color: var(--textColor);
+}
+#heroBtn {
+  animation: fadeInWithDelay 4s ease-in forwards;
+  background-color: rgba(0, 0, 0, 0.08);
+  color: var(--textColor);
+  margin-top: 6rem;
+  font-family: "Audiowide";
+  font-size: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: background-color 0.3s, scale 0.4s;
+}
+
+#heroBtn:hover {
+  scale: 1.05;
 }
