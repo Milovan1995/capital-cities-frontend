@@ -10,6 +10,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavbarComponent } from './util/navbar/navbar.component';
+import { GameComponent } from './game/game.component';
+import { RegionComponent } from './game/region/region.component';
+import { DurationComponent } from './game/duration/duration.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { NavbarComponent } from './util/navbar/navbar.component';
     RegisterComponent,
     LoginComponent,
     UserProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    GameComponent,
+    RegionComponent,
+    DurationComponent
   ],
   imports: [
     BrowserModule,
