@@ -14,6 +14,8 @@ import { GameComponent } from './game/game.component';
 import { RegionComponent } from './game/region/region.component';
 import { DurationComponent } from './game/duration/duration.component';
 import { FooterComponent } from './util/footer/footer.component';
+import { PlayGameComponent } from './game/play-game/play-game.component';
+import { AchievementsComponent } from './user-profile/achievements/achievements.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FooterComponent } from './util/footer/footer.component';
     GameComponent,
     RegionComponent,
     DurationComponent,
-    FooterComponent
+    FooterComponent,
+    PlayGameComponent,
+    AchievementsComponent
   ],
   imports: [
     BrowserModule,
