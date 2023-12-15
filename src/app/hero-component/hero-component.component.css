@@ -58,11 +58,6 @@
   align-items: center;
   padding-bottom: 200px;
 }
-.copyright {
-  position: absolute;
-  bottom: 20px;
-  color: var(--textColor);
-}
 #heroBtn {
   animation: fadeInWithDelay 4s ease-in forwards;
   background-color: rgba(254, 254, 254, 0.08);

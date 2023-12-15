@@ -13,6 +13,7 @@ import { NavbarComponent } from './util/navbar/navbar.component';
 import { GameComponent } from './game/game.component';
 import { RegionComponent } from './game/region/region.component';
 import { DurationComponent } from './game/duration/duration.component';
+import { FooterComponent } from './util/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DurationComponent } from './game/duration/duration.component';
     NavbarComponent,
     GameComponent,
     RegionComponent,
-    DurationComponent
+    DurationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
