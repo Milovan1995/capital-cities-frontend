@@ -5,6 +5,7 @@ import { TestComponent } from './test/test.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { GameComponent } from './game/game.component';
 
 const routes: Routes = [
   { path: '', component: HeroComponentComponent },
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'user',
     component: UserProfileComponent,
+  },
+  {
+    path: ':user/game',
+    component: GameComponent,
   },
 ];
 
