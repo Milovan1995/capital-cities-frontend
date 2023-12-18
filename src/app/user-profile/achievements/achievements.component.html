@@ -1,3 +1,6 @@
+<h3>Achievements:</h3>
 <ul>
-  <li>achievement #</li>
+  @for (achievement of achievements; track $index) {
+  <li>{{ achievement }}</li>
+  }
 </ul>
