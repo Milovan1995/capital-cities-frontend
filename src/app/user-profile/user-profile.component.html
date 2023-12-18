@@ -1,11 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="userPage">
-    <div class="text-center">
-      <h2>Welcome, {{ username }}!</h2>
-      <p>Explore the world of capital cities and improve your knowledge.</p>
-      <app-achievements></app-achievements>
-      <a routerLink="../game" class="btn btn-primary btn-lg">New Game</a>
+  <div class="userPage text-center">
+    <h2>Welcome, {{ username }}!</h2>
+    <div class="smallerContainer">
+      <a routerLink="../game" class="btn btn-lg" id="userBtn">New Game</a>
+      <div class="userContainer">
+        <app-achievements></app-achievements>
+        <app-user-highscores></app-user-highscores>
+      </div>
     </div>
   </div>
 </div>

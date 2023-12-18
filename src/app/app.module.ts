@@ -18,6 +18,7 @@ import { PlayGameComponent } from './game/play-game/play-game.component';
 import { AchievementsComponent } from './user-profile/achievements/achievements.component';
 import { HighscoresComponent } from './game/highscores/highscores.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     PlayGameComponent,
     AchievementsComponent,
     HighscoresComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    UserHighscoresComponent
   ],
   imports: [
     BrowserModule,
