@@ -6,6 +6,8 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GameComponent } from './game/game.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { HighscoresComponent } from './game/highscores/highscores.component';
 
 const routes: Routes = [
   { path: '', component: HeroComponentComponent },
@@ -26,8 +28,16 @@ const routes: Routes = [
     component: UserProfileComponent,
   },
   {
-    path: ':user/game',
+    path: 'game',
     component: GameComponent,
+  },
+  {
+    path: 'feedback',
+    component: FeedbackComponent,
+  },
+  {
+    path: 'highscores',
+    component: HighscoresComponent,
   },
 ];
 
