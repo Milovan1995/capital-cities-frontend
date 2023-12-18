@@ -1,3 +1,10 @@
 <app-navbar></app-navbar>
-<p>highscores works!</p>
+<div class="highscorePage">
+  <h3>Highscores:</h3>
+  <ul>
+    @for (highscore of highscores; track $index) {
+    <li>{{ highscore }}</li>
+    }
+  </ul>
+</div>
 <app-footer></app-footer>
