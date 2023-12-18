@@ -1,1 +1,6 @@
-<p>user-games works!</p>
+<h3>Game History</h3>
+<ul>
+  @for (game of games; track $index) {
+  <li>{{ game }}</li>
+  }
+</ul>
