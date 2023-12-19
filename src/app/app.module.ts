@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +23,7 @@ import { HighscoresComponent } from './game/highscores/highscores.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
 import { UserGamesComponent } from './user-profile/user-games/user-games.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,15 +43,10 @@ import { UserGamesComponent } from './user-profile/user-games/user-games.compone
     HighscoresComponent,
     FeedbackComponent,
     UserHighscoresComponent,
-    UserGamesComponent
+    UserGamesComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideClientHydration()
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [provideClientHydration()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
