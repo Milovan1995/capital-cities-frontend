@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroComponentComponent } from './hero-component/hero-component.component';
+import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
 import { TestComponent } from './test/test.component';
-import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './auth/login/login.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { GameComponent } from './game/game.component';
-import { FeedbackComponent } from './feedback/feedback.component';
-import { HighscoresComponent } from './game/highscores/highscores.component';
+import { AuthComponent } from './components/pages/auth/auth.component';
+import { LoginComponent } from './components/pages/auth/login/login.component';
+import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
+import { GameComponent } from './components/pages/game/game.component';
+import { FeedbackComponent } from './components/pages/feedback/feedback.component';
+import { HighscoresComponent } from './components/pages/game/highscores/highscores.component';
 
 const routes: Routes = [
   { path: '', component: HeroComponentComponent },

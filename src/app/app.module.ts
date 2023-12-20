@@ -5,24 +5,24 @@ import {
 } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeroComponentComponent } from './hero-component/hero-component.component';
+import { AppComponent } from './components/app/app.component';
+import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
 import { TestComponent } from './test/test.component';
-import { AuthComponent } from './auth/auth.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthComponent } from './components/pages/auth/auth.component';
+import { RegisterComponent } from './components/pages/auth/register/register.component';
+import { LoginComponent } from './components/pages/auth/login/login.component';
+import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
 import { NavbarComponent } from './util/navbar/navbar.component';
-import { GameComponent } from './game/game.component';
-import { RegionComponent } from './game/region/region.component';
-import { DurationComponent } from './game/duration/duration.component';
+import { GameComponent } from './components/pages/game/game.component';
+import { RegionComponent } from './components/pages/game/region/region.component';
+import { DurationComponent } from './components/pages/game/duration/duration.component';
 import { FooterComponent } from './util/footer/footer.component';
-import { PlayGameComponent } from './game/play-game/play-game.component';
-import { AchievementsComponent } from './user-profile/achievements/achievements.component';
-import { HighscoresComponent } from './game/highscores/highscores.component';
-import { FeedbackComponent } from './feedback/feedback.component';
-import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
-import { UserGamesComponent } from './user-profile/user-games/user-games.component';
+import { PlayGameComponent } from './components/pages/game/play-game/play-game.component';
+import { AchievementsComponent } from './components/pages/user-profile/achievements/achievements.component';
+import { HighscoresComponent } from './components/pages/game/highscores/highscores.component';
+import { FeedbackComponent } from './components/pages/feedback/feedback.component';
+import { UserHighscoresComponent } from './components/pages/user-profile/user-highscores/user-highscores.component';
+import { UserGamesComponent } from './components/pages/user-profile/user-games/user-games.component';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
