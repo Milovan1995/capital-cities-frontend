@@ -23,6 +23,7 @@ import { FeedbackComponent } from './components/pages/feedback/feedback.componen
 import { UserHighscoresComponent } from './components/pages/user-profile/user-highscores/user-highscores.component';
 import { UserGamesComponent } from './components/pages/user-profile/user-games/user-games.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UtilModule } from './util/util.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,11 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     LoginComponent,
     UserProfileComponent,
-    NavbarComponent,
     GameComponent,
     RegionComponent,
     DurationComponent,
-    FooterComponent,
     PlayGameComponent,
     AchievementsComponent,
     HighscoresComponent,
@@ -43,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserHighscoresComponent,
     UserGamesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, UtilModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
