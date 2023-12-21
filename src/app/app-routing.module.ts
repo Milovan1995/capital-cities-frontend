@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
 import { TestComponent } from './test/test.component';
-import { AuthComponent } from './components/pages/auth/auth.component';
-import { LoginComponent } from './components/pages/auth/login/login.component';
+import { LoginComponent } from './components/pages/login/login.component';
 import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
 import { GameComponent } from './components/pages/game/game.component';
 import { FeedbackComponent } from './components/pages/feedback/feedback.component';
 import { HighscoresComponent } from './components/pages/game/highscores/highscores.component';
+import { RegisterComponent } from './components/pages/register/register.component';
 
 const routes: Routes = [
   { path: '', component: HeroComponentComponent },
@@ -16,11 +16,11 @@ const routes: Routes = [
     component: TestComponent,
   },
   {
-    path: 'auth/register',
-    component: AuthComponent,
+    path: 'register',
+    component: RegisterComponent,
   },
   {
-    path: 'auth/login',
+    path: 'login',
     component: LoginComponent,
   },
   {

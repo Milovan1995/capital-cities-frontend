@@ -8,9 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
 import { TestComponent } from './test/test.component';
-import { AuthComponent } from './components/pages/auth/auth.component';
-import { RegisterComponent } from './components/pages/auth/register/register.component';
-import { LoginComponent } from './components/pages/auth/login/login.component';
+import { RegisterComponent } from './components/pages/register/register.component';
+import { LoginComponent } from './components/pages/login/login.component';
 import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
 import { NavbarComponent } from './util/navbar/navbar.component';
 import { GameComponent } from './components/pages/game/game.component';
@@ -29,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeroComponentComponent,
     TestComponent,
-    AuthComponent,
     RegisterComponent,
     LoginComponent,
     UserProfileComponent,
