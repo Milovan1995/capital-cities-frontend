@@ -6,7 +6,11 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withFetch,
+} from '@angular/common/http';
 import { UtilModule } from './util/util.module';
 import { PagesModule } from './components/pages/pages.module';
 @NgModule({
@@ -18,7 +22,7 @@ import { PagesModule } from './components/pages/pages.module';
     UtilModule,
     PagesModule,
   ],
-  providers: [provideClientHydration()],
+  providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

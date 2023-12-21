@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MyApiService } from '../../../my-api.service';
 import { Observer } from 'rxjs';
+import { Capital } from '../../models/capital';
 
 @Component({
   selector: 'app-game',
@@ -10,10 +11,11 @@ import { Observer } from 'rxjs';
 })
 export class GameComponent implements OnInit {
   constructor(private myApiService: MyApiService) {}
+  capitals: Capital[] = [];
   ngOnInit(): void {
     this.myApiService.getData().subscribe({
       next: (data: any) => {
-        console.log(data);
+        this.capitals = data.capitals;
       },
       error: (error: any) => {
         console.error(error, 'error');
