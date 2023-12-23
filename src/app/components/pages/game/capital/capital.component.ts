@@ -13,7 +13,7 @@ export class CapitalComponent implements OnInit, AfterContentInit {
   random: number;
   ngOnInit(): void {
     this.capitalService.getAllCapitals().subscribe((data) => {
-      this.capitals = data.capitals;
+      this.capitals = data['capitals'];
     });
   }
   ngAfterContentInit(): void {
