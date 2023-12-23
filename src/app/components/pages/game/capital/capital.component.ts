@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Capital } from '../../../models/capital';
+import { CapitalService } from '../../../../services/capital.service';
 
 @Component({
   selector: 'app-capital',
@@ -7,8 +8,10 @@ import { Capital } from '../../../models/capital';
   styleUrl: './capital.component.css',
 })
 export class CapitalComponent implements OnInit {
-  capitals: Capital[] = [new Capital(0, 'Montenegro', 'Podgorica', 1)];
+  capitals: Capital[];
+  constructor(private capitalService: CapitalService) {}
+
   ngOnInit(): void {
-    console.log(this.capitals);
+    this.capitals = this.capitalService.getAllCapitals();
   }
 }
