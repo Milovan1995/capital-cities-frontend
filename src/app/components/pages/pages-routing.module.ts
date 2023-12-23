@@ -8,7 +8,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GameComponent } from './game/game.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HighscoresComponent } from './game/highscores/highscores.component';
-
+import { CapitalComponent } from './game/capital/capital.component';
 
 const routes: Routes = [
   { path: '', component: HeroComponentComponent },
@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'highscores',
     component: HighscoresComponent,
+  },
+  {
+    path: 'capitals',
+    component: CapitalComponent,
   },
 ];
 
