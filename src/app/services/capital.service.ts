@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Capital } from '../components/models/capital';
+import { HttpClient } from '@angular/common/http';
+import { CapitalsResponse } from '../components/models/capitalsResponse';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CapitalService {
-  constructor() {}
-  getAllCapitals(): Capital[] {
-    return [
-      new Capital(0, 'Montenegro', 'Podgorica', 1),
-      new Capital(1, 'Serbia', 'Belgrade', 1),
-    ];
+  constructor(private http: HttpClient) {}
+
+  getAllCapitals(regionId?: number) {
+    return this.http.get<CapitalsResponse>(
+      `http://localhost:3000/api/game/capitals${regionId ? '/' + regionId : ''}`
+    );
   }
 }
+// /api/game/capitals/:regionId?
