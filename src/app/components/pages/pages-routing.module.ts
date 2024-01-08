@@ -9,12 +9,17 @@ import { GameComponent } from './game/game.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HighscoresComponent } from './game/highscores/highscores.component';
 import { CapitalComponent } from './game/capital/capital.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HeroComponentComponent },
   {
     path: 'test',
     component: TestComponent,
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
   },
   {
     path: 'register',

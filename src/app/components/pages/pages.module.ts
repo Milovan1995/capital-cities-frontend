@@ -11,6 +11,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
 import { UserGamesComponent } from './user-profile/user-games/user-games.component';
 import { GameModule } from './game/game.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { GameModule } from './game/game.module';
     FeedbackComponent,
     UserHighscoresComponent,
     UserGamesComponent,
+    HomeComponent,
   ],
   imports: [CommonModule, PagesRoutingModule, RouterModule, GameModule],
   exports: [
