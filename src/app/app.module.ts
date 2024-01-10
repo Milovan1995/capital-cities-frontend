@@ -14,8 +14,9 @@ import {
 import { UtilModule } from './util/util.module';
 import { PagesModule } from './components/pages/pages.module';
 import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
+import { HomeComponent } from './components/pages/home/home.component';
 @NgModule({
-  declarations: [AppComponent, HeroComponentComponent],
+  declarations: [AppComponent, HeroComponentComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

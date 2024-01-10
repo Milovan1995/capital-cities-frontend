@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
-import { HeroComponentComponent } from './hero-component/hero-component.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -11,7 +10,6 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
 import { UserGamesComponent } from './user-profile/user-games/user-games.component';
 import { GameModule } from './game/game.module';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +20,6 @@ import { HomeComponent } from './home/home.component';
     FeedbackComponent,
     UserHighscoresComponent,
     UserGamesComponent,
-    HomeComponent,
   ],
   imports: [CommonModule, PagesRoutingModule, RouterModule, GameModule],
   exports: [
