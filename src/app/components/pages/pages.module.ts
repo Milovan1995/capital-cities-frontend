@@ -15,7 +15,6 @@ import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    HeroComponentComponent,
     RegisterComponent,
     LoginComponent,
     UserProfileComponent,
@@ -27,7 +26,6 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [CommonModule, PagesRoutingModule, RouterModule, GameModule],
   exports: [
-    HeroComponentComponent,
     RegisterComponent,
     LoginComponent,
     UserProfileComponent,

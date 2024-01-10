@@ -13,8 +13,9 @@ import {
 } from '@angular/common/http';
 import { UtilModule } from './util/util.module';
 import { PagesModule } from './components/pages/pages.module';
+import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeroComponentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
