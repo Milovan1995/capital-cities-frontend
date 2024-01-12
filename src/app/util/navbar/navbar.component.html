@@ -1,13 +1,18 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="navbar-header">
-    <a class="navbar-brand" routerLink="../user">
-      <img alt="Avatar" src="../../../favicon.ico" class="avatar-img" />
-    </a>
+    <img
+      alt="Avatar"
+      routerLink="/home"
+      src="../../../assets/images/Capital Cities.png"
+      class="avatar-img navbar-brand"
+      id="avatarImg"
+    />
   </div>
-  <ul class="nav navbar-nav">
-    <li><a routerLink="/user">Profile</a></li>
-    <li><a routerLink="/highscores">HighScores</a></li>
-    <li><a routerLink="/feedback">Feedback</a></li>
-    <li><a routerLink="/home">Logout</a></li>
+  <ul class="nav navbar-nav navLink" *ngIf="navbarItems.length > 0">
+    @for (b of navbarItems; track $index) {
+    <li routerLink="{{ b.route }}">
+      <a>{{ b.name }}</a>
+    </li>
+    }
   </ul>
 </nav>

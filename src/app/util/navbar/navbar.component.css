@@ -1,0 +1,15 @@
+#avatarImg {
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+  margin: auto 1rem;
+}
+#avatarImg:hover {
+  cursor: pointer;
+}
+.navbar {
+  background-color: var(--linkColor);
+}
+.navLink {
+  cursor: pointer;
+}

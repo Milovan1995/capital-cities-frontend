@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +7,4 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
   showNavbar: boolean = true;
-  constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (event.url !== '/') {
-          this.showNavbar = true;
-        } else {
-          this.showNavbar = false;
-        }
-      }
-    });
-  }
 }
