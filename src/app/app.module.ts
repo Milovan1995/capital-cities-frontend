@@ -12,10 +12,11 @@ import {
   withFetch,
 } from '@angular/common/http';
 import { UtilModule } from './util/util.module';
-import { HeroComponentComponent } from './components/pages/hero-component/hero-component.component';
-import { HomeComponent } from './components/pages/home/home.component';
+import { HeroComponentComponent } from './components/app/hero-component/hero-component.component';
+import { HomeComponent } from './components/app/home/home.component';
+import { AboutComponent } from './components/app/about/about.component';
 @NgModule({
-  declarations: [AppComponent, HeroComponentComponent, HomeComponent],
+  declarations: [AppComponent, HeroComponentComponent, HomeComponent, AboutComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, UtilModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
