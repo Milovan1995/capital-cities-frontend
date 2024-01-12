@@ -13,3 +13,9 @@
 .navLink {
   cursor: pointer;
 }
+.navRight {
+  margin-right: 3rem;
+}
+.navbar {
+  font-family: "Audiowide", sans-serif;
+}
