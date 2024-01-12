@@ -7,5 +7,8 @@ import { Link } from '../../models/link';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  navbarItems: Link[] = [{ name: 'Login', route: '/pages/login' }];
+  navbarItems: Link[] = [
+    new Link('About', '/about'),
+    new Link('Play Now', '/pages/user/play'),
+  ];
 }
