@@ -10,6 +10,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
 import { UserGamesComponent } from './user-profile/user-games/user-games.component';
 import { GameModule } from './game/game.module';
+import { UtilModule } from '../../util/util.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,13 @@ import { GameModule } from './game/game.module';
     UserHighscoresComponent,
     UserGamesComponent,
   ],
-  imports: [CommonModule, PagesRoutingModule, RouterModule, GameModule],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    RouterModule,
+    GameModule,
+    UtilModule,
+  ],
   exports: [
     RegisterComponent,
     LoginComponent,

@@ -1,10 +1,11 @@
-<section class="registerPage">
+<app-navbar [navbarItems]="navbarLinks"></app-navbar>
+<section class="registerPage container">
   <div class="registerForm">
     <label for="usernameInput">Username</label>
     <input type="text" class="usernameInput" id="usernameInput" />
     <label for="passwordInput">Password</label>
     <input type="text" class="passwordInput" id="passwordInput" />
-    <button class="btn" routerLink="/user">Register</button>
+    <button class="btn" routerLink="/pages/user">Register</button>
   </div>
   <a routerLink="/pages/login" class="btn">Already a user?</a>
 </section>

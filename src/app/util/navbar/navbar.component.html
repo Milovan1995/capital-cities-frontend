@@ -9,9 +9,9 @@
     />
   </div>
   <ul class="nav navbar-nav navLink" *ngIf="navbarItems.length > 0">
-    @for (b of navbarItems; track $index) {
-    <li routerLink="{{ b.route }}">
-      <a>{{ b.name }}</a>
+    @for (link of navbarItems; track $index) {
+    <li routerLink="{{ link.route }}">
+      <a>{{ link.name }}</a>
     </li>
     }
   </ul>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Link } from '../../models/link';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class UserProfileComponent {
   username: string = 'Milovan';
+  navbarLinks: Link[] = [
+    new Link('Profile', '/pages/user'),
+    new Link('Highscores', '/pages/highscores'),
+    new Link('Feedback', '/pages/feedback'),
+    new Link('Play', '/pages/user/play'),
+  ];
 }
