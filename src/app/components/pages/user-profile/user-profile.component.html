@@ -3,7 +3,7 @@
   <div class="userPage text-center">
     <h2>Welcome, {{ username }}!</h2>
     <div class="smallerContainer">
-      <a routerLink="/game" class="btn btn-lg" id="userBtn">New Game</a>
+      <app-button [route]="buttonRoute"></app-button>
       <div class="userContainer">
         <app-achievements></app-achievements>
         <app-user-games></app-user-games>

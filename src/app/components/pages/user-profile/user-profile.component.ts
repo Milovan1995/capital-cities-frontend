@@ -7,6 +7,7 @@ import { Link } from '../../models/link';
 })
 export class UserProfileComponent {
   username: string = 'Milovan';
+  buttonRoute: Link = new Link('Play', '/pages/user/play');
   navbarLinks: Link[] = [
     new Link('Profile', '/pages/user'),
     new Link('Highscores', '/pages/highscores'),

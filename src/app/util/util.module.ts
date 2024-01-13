@@ -8,6 +8,6 @@ import { ButtonComponent } from './button/button.component';
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, ButtonComponent],
   imports: [CommonModule, RouterModule],
-  exports: [NavbarComponent, FooterComponent],
+  exports: [NavbarComponent, FooterComponent, ButtonComponent],
 })
 export class UtilModule {}
