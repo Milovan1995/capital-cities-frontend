@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DurationComponent } from './duration.component';
+import { UserPlayComponent } from './user-play.component';
 
-describe('DurationComponent', () => {
-  let component: DurationComponent;
-  let fixture: ComponentFixture<DurationComponent>;
+describe('UserPlayComponent', () => {
+  let component: UserPlayComponent;
+  let fixture: ComponentFixture<UserPlayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DurationComponent]
+      declarations: [UserPlayComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DurationComponent);
+    fixture = TestBed.createComponent(UserPlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

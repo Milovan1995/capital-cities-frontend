@@ -2,13 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { GameComponent } from './game/game.component';
-import { FeedbackComponent } from './feedback/feedback.component';
-import { HighscoresComponent } from './game/highscores/highscores.component';
-import { CapitalComponent } from './game/capital/capital.component';
-import { PlayGameComponent } from './game/play-game/play-game.component';
-
 const routes: Routes = [
   {
     path: 'register',
@@ -20,23 +13,10 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserProfileComponent,
-  },
-  {
-    path: 'user/play',
-    component: PlayGameComponent,
-  },
-  {
-    path: 'feedback',
-    component: FeedbackComponent,
-  },
-  {
-    path: 'highscores',
-    component: HighscoresComponent,
-  },
-  {
-    path: 'capitals',
-    component: CapitalComponent,
+    loadChildren: () =>
+      import('../../components/user-profile/user-profile.module').then(
+        (um) => um.UserProfileModule
+      ),
   },
 ];
 

@@ -3,40 +3,11 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { RouterModule } from '@angular/router';
-import { AchievementsComponent } from './user-profile/achievements/achievements.component';
-import { FeedbackComponent } from './feedback/feedback.component';
-import { UserHighscoresComponent } from './user-profile/user-highscores/user-highscores.component';
-import { UserGamesComponent } from './user-profile/user-games/user-games.component';
-import { GameModule } from './game/game.module';
 import { UtilModule } from '../../util/util.module';
 
 @NgModule({
-  declarations: [
-    RegisterComponent,
-    LoginComponent,
-    UserProfileComponent,
-    AchievementsComponent,
-    FeedbackComponent,
-    UserHighscoresComponent,
-    UserGamesComponent,
-  ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule,
-    RouterModule,
-    GameModule,
-    UtilModule,
-  ],
-  exports: [
-    RegisterComponent,
-    LoginComponent,
-    UserProfileComponent,
-    AchievementsComponent,
-    FeedbackComponent,
-    UserHighscoresComponent,
-    UserGamesComponent,
-  ],
+  declarations: [RegisterComponent, LoginComponent],
+  imports: [CommonModule, PagesRoutingModule, UtilModule],
+  exports: [RegisterComponent, LoginComponent],
 })
 export class PagesModule {}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Link } from '../../../models/link';
+import { Link } from '../../models/link';
 
 @Component({
   selector: 'app-highscores',
