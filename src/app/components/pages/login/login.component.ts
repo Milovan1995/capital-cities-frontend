@@ -8,4 +8,5 @@ import { Link } from '../../models/link';
 })
 export class LoginComponent {
   navbarLinks: Link[] = [new Link('Home', '/home')];
+  loginBtnRoute: Link = new Link('Login', '/pages/user');
 }

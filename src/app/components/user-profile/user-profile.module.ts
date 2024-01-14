@@ -8,6 +8,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { UserGamesComponent } from './user-games/user-games.component';
 import { UserHighscoresComponent } from './user-highscores/user-highscores.component';
 import { UserPlayComponent } from './user-play/user-play.component';
+import { UtilModule } from '../../util/util.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { UserPlayComponent } from './user-play/user-play.component';
     UserHighscoresComponent,
     UserPlayComponent,
   ],
-  imports: [CommonModule, UserProfileRoutingModule],
+  imports: [CommonModule, UserProfileRoutingModule, UtilModule],
   exports: [
     UserProfileComponent,
     AchievementsComponent,

@@ -1,0 +1,31 @@
+.container {
+  width: 25%;
+  padding: 3rem;
+}
+
+div.container div.formsText label {
+  font-weight: 300;
+}
+div.container div.formsText span {
+  color: var(--textColor);
+  font-size: 17px;
+  font-family: cursive;
+}
+div.container div.formsText span a {
+  background-color: inherit;
+  color: var(--textColor);
+  text-decoration: underline;
+}
+div.container div.formsText span a:hover {
+  text-decoration: none;
+}
+.loginBtn {
+  display: block;
+  background-color: var(--linkColor);
+  margin-top: 1rem;
+  border: 1px solid var(--textColor);
+}
+.loginBtn:hover {
+  background-color: var(--textColor);
+  color: var(--bgColor);
+}
