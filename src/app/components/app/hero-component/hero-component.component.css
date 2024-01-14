@@ -30,6 +30,7 @@
   animation: fadeIn 2s ease-in forwards;
   color: var(--textColor);
   display: block;
+  font-family: sans-serif;
 }
 #descriptionSpan {
   text-align: center;
