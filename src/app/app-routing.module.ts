@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/pages/pages.module').then((pm) => pm.PagesModule),
   },
+  {
+    path: 'capitals',
+    loadChildren: () =>
+      import('../app/components/game/game.module').then((gm) => gm.GameModule),
+  },
 ];
 
 @NgModule({
