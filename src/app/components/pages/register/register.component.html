@@ -1,11 +1,25 @@
 <app-navbar [navbarItems]="navbarLinks"></app-navbar>
-<section class="registerPage container">
-  <div class="registerForm">
-    <label for="usernameInput">Username</label>
-    <input type="text" class="usernameInput" id="usernameInput" />
-    <label for="passwordInput">Password</label>
-    <input type="text" class="passwordInput" id="passwordInput" />
-    <button class="btn" routerLink="/pages/user">Register</button>
+<div class="container">
+  <div class="formsText">
+    <div class="form-floating">
+      <label for="floatingInput">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Username"
+      />
+    </div>
+    <label for="floatingPassword">Password</label>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+      />
+    </div>
+    <span>Already have an account? <a routerLink="/pages/login">Login</a></span>
+    <button class="btn registerBtn" routerLink="/pages/user">Register</button>
   </div>
-  <a routerLink="/pages/login" class="btn">Already a user?</a>
-</section>
+</div>
