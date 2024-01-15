@@ -20,7 +20,7 @@ export class CapitalsListComponent implements OnInit {
       .getAllCapitals()
       .subscribe((capitals) => (this.capitals = [...capitals['capitals']]));
   }
-  selectRegion(region_id: number): string {
+  showRegion(region_id: number): string {
     switch (region_id) {
       case 1:
         return 'Europe';
