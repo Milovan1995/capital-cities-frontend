@@ -7,6 +7,13 @@
       <th>Capital</th>
       <th>Region</th>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <tr *ngFor="let c of capitals; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ c.country }}</td>
+        <td>{{ c.capital }}</td>
+        <td>{{ selectRegion(c.region_id) }}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

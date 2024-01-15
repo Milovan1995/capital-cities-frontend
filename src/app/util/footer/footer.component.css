@@ -1,7 +1,9 @@
 .copyright {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--textColor);
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.copyright small {
+  font-family: cursive;
 }

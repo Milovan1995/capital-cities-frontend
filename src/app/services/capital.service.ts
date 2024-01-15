@@ -10,7 +10,7 @@ export class CapitalService {
 
   getAllCapitals(regionId?: number) {
     return this.http.get<Record<string, Capital[]>>(
-      `http://localhost:3000/api/game/capitals${regionId ? '/' + regionId : ''}`
+      `http://localhost:3000/game/capitals${regionId ? '/' + regionId : ''}`
     );
   }
 }
