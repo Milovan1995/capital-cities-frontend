@@ -1,12 +1,12 @@
 export class Capital {
-  constructor(id: number, country: string, capital: string, regionId: number) {
+  constructor(id: number, country: string, capital: string, region: string) {
     this.id = id;
     this.country = country;
     this.capital = capital;
-    this.region_id = regionId;
+    this.region = region;
   }
   id: number;
   country: string;
   capital: string;
-  region_id: number;
+  region: string;
 }

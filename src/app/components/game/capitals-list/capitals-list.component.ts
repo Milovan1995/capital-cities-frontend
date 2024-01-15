@@ -16,7 +16,9 @@ export class CapitalsListComponent implements OnInit {
   ];
   capitals: Capital[] = [];
   errorMessage?: string;
+
   constructor(private capitalService: CapitalService) {}
+
   ngOnInit() {
     this.capitalService.getAllCapitals().subscribe({
       next: (capitalsResponse: CapitalsResponse) => {
@@ -28,19 +30,5 @@ export class CapitalsListComponent implements OnInit {
           'Apologies, our server might be undergoing a maintenance, please try exploring in a couple of minutes';
       },
     });
-  }
-  showRegion(region_id: number): string {
-    switch (region_id) {
-      case 1:
-        return 'Europe';
-      case 2:
-        return 'Asia';
-      case 3:
-        return 'Africa';
-      case 4:
-        return 'Oceania';
-      default:
-        return 'North and South America';
-    }
   }
 }

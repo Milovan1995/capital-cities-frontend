@@ -8,11 +8,13 @@ import { throwError, Observable, catchError } from 'rxjs';
 })
 export class CapitalService {
   constructor(private http: HttpClient) {}
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage = `An error occurred : ${err.error.message}`;
     console.error(err);
     return throwError(() => errorMessage);
   }
+
   getAllCapitals(regionId?: number) {
     return this.http
       .get<CapitalsResponse>(
