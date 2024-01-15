@@ -1,19 +1,24 @@
 <app-navbar [navbarItems]="navbarLinks"></app-navbar>
 <div class="container">
-  <table class="table table-striped">
-    <thead>
-      <th>No</th>
-      <th>Country</th>
-      <th>Capital</th>
-      <th>Region</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of capitals; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td>{{ c.country }}</td>
-        <td>{{ c.capital }}</td>
-        <td>{{ showRegion(c.region_id) }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <ng-container *ngIf="!errorMessage">
+    <table class="table table-striped">
+      <thead>
+        <th>No</th>
+        <th>Country</th>
+        <th>Capital</th>
+        <th>Region</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of capitals; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ c.country }}</td>
+          <td>{{ c.capital }}</td>
+          <td>{{ showRegion(c.region_id) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="errorMessage">
+    <h3>{{ errorMessage }}</h3>
+  </ng-container>
 </div>
