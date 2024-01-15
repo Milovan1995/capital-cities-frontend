@@ -8,9 +8,7 @@ import { Link } from '../../models/link';
 })
 export class PlayGameComponent {
   navbarLinks: Link[] = [
-    new Link('Profile', '/pages/user'),
-    new Link('Highscores', '/pages/highscores'),
-    new Link('Feedback', '/pages/feedback'),
-    new Link('Play', '/pages/game'),
+    new Link('About', '/about'),
+    new Link('Explore', '/capitals'),
   ];
 }

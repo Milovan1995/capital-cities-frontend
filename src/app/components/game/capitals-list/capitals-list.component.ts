@@ -12,7 +12,7 @@ import { CapitalsResponse } from '../../models/capitalsResponse';
 export class CapitalsListComponent implements OnInit {
   navbarLinks: Link[] = [
     new Link('About', '/about'),
-    new Link('Play Now', '/capitals/play'),
+    new Link('Play Now', '/capitals/play-game'),
   ];
   capitals: Capital[] = [];
   errorMessage?: string;

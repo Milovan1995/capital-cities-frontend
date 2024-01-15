@@ -10,6 +10,6 @@ export class HomeComponent {
   navbarItems: Link[] = [
     new Link('About', '/about'),
     new Link('Explore', '/capitals'),
-    new Link('Play Now', '/capitals/play'),
+    new Link('Play Now', '/capitals/play-game'),
   ];
 }

@@ -9,6 +9,6 @@ import { Link } from '../../models/link';
 export class AboutComponent {
   navbarItems: Link[] = [
     new Link('Explore', '/capitals'),
-    new Link('Play Now', '/capitals/play'),
+    new Link('Play Now', '/capitals/play-game'),
   ];
 }

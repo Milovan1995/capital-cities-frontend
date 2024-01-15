@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Capital } from '../../models/capital';
-import { CapitalService } from '../../../services/capital.service';
 
 @Component({
   selector: 'app-capital',
@@ -8,6 +7,5 @@ import { CapitalService } from '../../../services/capital.service';
   styleUrl: './capital.component.css',
 })
 export class CapitalComponent {
-  capitals: Capital[] = [];
-  constructor(private capitalService: CapitalService) {}
+  @Input() capital: Capital;
 }

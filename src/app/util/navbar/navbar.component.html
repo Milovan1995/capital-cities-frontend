@@ -16,7 +16,7 @@
     }
   </ul>
   <ul class="nav navbar-nav navLink navbar-right navRight">
-    @if(hasRoute('/home')||hasRoute('/about')||hasRoute('/capitals')){
+    @if(hasRoute('/home')||hasRoute('/about')||partiallyContainsRoute('/capitals')){
     <li routerLink="{{ linkWhenLoggedOut.route }}">
       <a>{{ linkWhenLoggedOut.name }}</a>
     </li>
