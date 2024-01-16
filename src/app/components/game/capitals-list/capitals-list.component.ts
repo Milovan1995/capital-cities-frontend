@@ -3,6 +3,7 @@ import { Link } from '../../models/link';
 import { CapitalService } from '../../../services/capital.service';
 import { Capital } from '../../models/capital';
 import { CapitalsResponse } from '../../models/capitalsResponse';
+import { CapitalCacheService } from '../../../services/capital-cache.service';
 
 @Component({
   selector: 'app-capitals-list',
@@ -17,18 +18,25 @@ export class CapitalsListComponent implements OnInit {
   capitals: Capital[] = [];
   errorMessage?: string;
 
-  constructor(private capitalService: CapitalService) {}
+  constructor(
+    private capitalService: CapitalService,
+    private capitalCacheService: CapitalCacheService
+  ) {}
 
   ngOnInit() {
-    this.capitalService.getAllCapitals().subscribe({
-      next: (capitalsResponse: CapitalsResponse) => {
-        this.capitals = [...capitalsResponse.capitals];
-      },
-      error: (error) => {
-        console.error('Error loading capitals:', error);
-        this.errorMessage =
-          'Apologies, our server might be undergoing a maintenance, please try exploring in a couple of minutes';
-      },
-    });
+    this.capitals = this.capitalCacheService.getCapitals();
+    if (!this.capitals) {
+      this.capitalService.getAllCapitals().subscribe({
+        next: (capitalsResponse: CapitalsResponse) => {
+          this.capitals = [...capitalsResponse.capitals];
+          this.capitalCacheService.setCapitals(this.capitals);
+        },
+        error: (error) => {
+          console.error('Error loading capitals:', error);
+          this.errorMessage =
+            'Apologies, our server might be undergoing a maintenance, please try exploring in a couple of minutes';
+        },
+      });
+    }
   }
 }
