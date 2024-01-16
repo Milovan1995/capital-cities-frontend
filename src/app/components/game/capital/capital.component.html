@@ -1,1 +1,10 @@
-<h1>Capital component</h1>
+<div class="container gameComponent">
+  <h1>Guess the capital</h1>
+  <h3>{{ capital.country }}</h3>
+  <input
+    type="text"
+    [(ngModel)]="answer"
+    placeholder="Enter capital"
+    (keyup.enter)="onUserAnswer()"
+  />
+</div>

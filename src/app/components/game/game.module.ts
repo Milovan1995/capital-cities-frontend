@@ -8,6 +8,7 @@ import { PlayGameComponent } from './play-game/play-game.component';
 import { UtilModule } from '../../util/util.module';
 import { GameRoutingModule } from './game-routing.module';
 import { CapitalsListComponent } from './capitals-list/capitals-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { CapitalsListComponent } from './capitals-list/capitals-list.component';
     PlayGameComponent,
     CapitalsListComponent,
   ],
-  imports: [CommonModule, RouterModule, UtilModule, GameRoutingModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    UtilModule,
+    GameRoutingModule,
+    FormsModule,
+  ],
   exports: [
     GameComponent,
     HighscoresComponent,

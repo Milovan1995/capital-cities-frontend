@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Capital } from '../../models/capital';
 
 @Component({
@@ -8,4 +8,14 @@ import { Capital } from '../../models/capital';
 })
 export class CapitalComponent {
   @Input() capital: Capital;
+  @Output() answeredCorrectly: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+  answer: string;
+  onUserAnswer() {
+    let currentAnswer = this.answer ? this.answer : '';
+    this.answer = undefined;
+    this.answeredCorrectly.emit(
+      currentAnswer.toUpperCase() === this.capital.capital.toUpperCase()
+    );
+  }
 }
