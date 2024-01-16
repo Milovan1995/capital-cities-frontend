@@ -3,6 +3,7 @@ import { Link } from '../../models/link';
 import { CapitalService } from '../../../services/capital.service';
 import { CapitalsResponse } from '../../models/capitalsResponse';
 import { Capital } from '../../models/capital';
+import { CapitalCacheService } from '../../../services/capital-cache.service';
 
 @Component({
   selector: 'app-play-game',
@@ -20,20 +21,27 @@ export class PlayGameComponent implements OnInit {
   score: number = 0;
   errorMessage?: string;
 
-  constructor(private capitalService: CapitalService) {}
+  constructor(
+    private capitalService: CapitalService,
+    private capitalCacheService: CapitalCacheService
+  ) {}
 
   ngOnInit(): void {
-    this.capitalService.getAllCapitals().subscribe({
-      next: (capitalsResponse: CapitalsResponse) => {
-        this.capitals = [...capitalsResponse.capitals];
-      },
-      error: (error) => {
-        console.error('Error loading capitals', error);
-        this.errorMessage =
-          'Apologies,server might be undergoing a maintenence right now, try again later.';
-      },
-    });
-    this.randomizeAndRemove(this.capitals);
+    this.capitals = [...this.capitalCacheService.getCapitals()];
+    if (!this.capitals) {
+      this.capitalService.getAllCapitals().subscribe({
+        next: (capitalsResponse: CapitalsResponse) => {
+          this.capitals = [...capitalsResponse.capitals];
+          this.capitalCacheService.setCapitals([...this.capitals]);
+        },
+        error: (error) => {
+          console.error('Error loading capitals', error);
+          this.errorMessage =
+            'Apologies,server might be undergoing a maintenence right now, try again later.';
+        },
+      });
+    }
+    this.capitals && this.randomizeAndRemove(this.capitals);
   }
   randomizeAndRemove(array: Capital[]) {
     for (let i = array.length - 1; i > 0; i--) {
