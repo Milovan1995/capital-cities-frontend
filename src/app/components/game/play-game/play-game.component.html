@@ -1,9 +1,13 @@
 <app-navbar [navbarItems]="navbarLinks"></app-navbar>
 <div class="container gameScreen">
-  <h3>Current score {{ score }}</h3>
-  <app-capital
-    *ngIf="currentCapital"
-    [capital]="currentCapital"
-    (answeredCorrectly)="handleAnswer($event)"
-  ></app-capital>
+  <div *ngIf="currentCapital">
+    <h3>Current score {{ score }}</h3>
+    <app-capital
+      [capital]="currentCapital"
+      (answeredCorrectly)="handleAnswer($event)"
+    ></app-capital>
+  </div>
+  <h1 *ngIf="errorMessage">
+    {{ errorMessage }}
+  </h1>
 </div>

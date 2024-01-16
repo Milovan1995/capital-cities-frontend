@@ -4,7 +4,10 @@ import { CapitalsListComponent } from './capitals-list/capitals-list.component';
 import { PlayGameComponent } from './play-game/play-game.component';
 const routes: Routes = [
   { path: '', component: CapitalsListComponent },
-  { path: 'play-game', component: PlayGameComponent },
+  {
+    path: 'play-game',
+    component: PlayGameComponent,
+  },
 ];
 
 @NgModule({

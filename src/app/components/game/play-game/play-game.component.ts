@@ -27,8 +27,9 @@ export class PlayGameComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.capitals = [...this.capitalCacheService.getCapitals()];
-    if (!this.capitals) {
+    const capitalsCache = this.capitalCacheService.getCapitals();
+    this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
+    if (this.capitals.length < 1) {
       this.capitalService.getAllCapitals().subscribe({
         next: (capitalsResponse: CapitalsResponse) => {
           this.capitals = [...capitalsResponse.capitals];
@@ -39,10 +40,15 @@ export class PlayGameComponent implements OnInit {
           this.errorMessage =
             'Apologies,server might be undergoing a maintenence right now, try again later.';
         },
+        complete: () => {
+          this.randomizeAndRemove(this.capitals);
+        },
       });
+    } else {
+      this.randomizeAndRemove(this.capitals);
     }
-    this.capitals && this.randomizeAndRemove(this.capitals);
   }
+
   randomizeAndRemove(array: Capital[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j: number = Math.floor(Math.random() * (i + 1));
