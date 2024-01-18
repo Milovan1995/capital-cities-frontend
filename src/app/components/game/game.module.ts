@@ -9,6 +9,7 @@ import { UtilModule } from '../../util/util.module';
 import { GameRoutingModule } from './game-routing.module';
 import { CapitalsListComponent } from './capitals-list/capitals-list.component';
 import { FormsModule } from '@angular/forms';
+import { GameOptionsComponent } from './game-options/game-options.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     CapitalComponent,
     PlayGameComponent,
     CapitalsListComponent,
+    GameOptionsComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     PlayGameComponent,
     CapitalComponent,
     CapitalsListComponent,
+    GameOptionsComponent,
   ],
 })
 export class GameModule {}
