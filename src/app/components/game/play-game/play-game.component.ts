@@ -4,6 +4,7 @@ import { CapitalService } from '../../../services/capital.service';
 import { CapitalsResponse } from '../../models/capitalsResponse';
 import { Capital } from '../../models/capital';
 import { CapitalCacheService } from '../../../services/capital-cache.service';
+import { GameSettings } from '../../models/gameSettings';
 
 @Component({
   selector: 'app-play-game',
@@ -20,6 +21,9 @@ export class PlayGameComponent implements OnInit {
   currentCapital: Capital;
   score: number = 0;
   errorMessage?: string;
+  gameOptionsPicked: boolean = false;
+  gameSettings: GameSettings;
+  regionId: number = undefined;
 
   constructor(
     private capitalService: CapitalService,
@@ -29,37 +33,89 @@ export class PlayGameComponent implements OnInit {
   ngOnInit(): void {
     const capitalsCache = this.capitalCacheService.getCapitals();
     this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
-    if (this.capitals.length < 1) {
-      this.capitalService.getAllCapitals().subscribe({
-        next: (capitalsResponse: CapitalsResponse) => {
-          this.capitals = [...capitalsResponse.capitals];
-          this.capitalCacheService.setCapitals([...this.capitals]);
-        },
-        error: (error) => {
-          console.error('Error loading capitals', error);
-          this.errorMessage =
-            'Apologies,server might be undergoing a maintenence right now, try again later.';
-        },
-        complete: () => {
-          this.randomizeAndRemove(this.capitals);
-        },
-      });
-    } else {
-      this.randomizeAndRemove(this.capitals);
-    }
   }
 
-  randomizeAndRemove(array: Capital[]) {
+  loadCapitals(rId?: number) {
+    //if theres no capitals from cache:
+    if (this.capitals.length < 1) {
+      if (rId) {
+        this.capitalService.getAllCapitals(rId).subscribe({
+          next: (capitalsResponse: CapitalsResponse) => {
+            this.capitals = [...capitalsResponse.capitals];
+            this.capitalCacheService.setCapitals([...this.capitals]);
+          },
+          error: (error) => {
+            console.error('Error loading capitals', error);
+            this.errorMessage =
+              'Apologies,server might be undergoing a maintenence right now, try again later.';
+          },
+          complete: () => {
+            this.randomizeAndRemoveCapital(this.capitals);
+          },
+        });
+      } else {
+        this.capitalService.getAllCapitals().subscribe({
+          next: (capitalsResponse: CapitalsResponse) => {
+            this.capitals = [...capitalsResponse.capitals];
+            this.capitalCacheService.setCapitals([...this.capitals]);
+          },
+          error: (error) => {
+            console.error('Error loading capitals', error);
+            this.errorMessage =
+              'Apologies,server might be undergoing a maintenence right now, try again later.';
+          },
+          complete: () => {
+            this.randomizeAndRemoveCapital(this.capitals);
+          },
+        });
+      }
+      //if there is capitals in cache:
+    } else {
+      if (this.gameSettings.region !== 'World') {
+        this.capitals = this.capitals.filter(
+          (element) => element.region == this.gameSettings.region
+        );
+      }
+      this.randomizeAndRemoveCapital(this.capitals);
+    }
+  }
+  //pick a random element from the array, put it on the last spot, pop.
+  randomizeAndRemoveCapital(array: Capital[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j: number = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
     const removedCapital: Capital = array.pop();
-    console.log(removedCapital.capital);
     this.currentCapital = removedCapital;
   }
+
   handleAnswer(isCorrect: boolean) {
     isCorrect && this.score++;
-    this.randomizeAndRemove(this.capitals);
+    this.randomizeAndRemoveCapital(this.capitals);
+  }
+
+  onOptionsSelected(options: GameSettings) {
+    this.gameSettings = options;
+    this.gameOptionsPicked = true;
+    if (this.gameSettings.region !== 'World') {
+      this.regionId = this.getRegionId(this.gameSettings.region);
+      return this.loadCapitals(this.regionId);
+    }
+    this.loadCapitals();
+  }
+
+  getRegionId(region: string) {
+    switch (region) {
+      case 'Europe':
+        return 1;
+      case 'Africa':
+        return 2;
+      case 'Asia':
+        return 3;
+      case 'Oceania':
+        return 4;
+      default:
+        return 5;
+    }
   }
 }

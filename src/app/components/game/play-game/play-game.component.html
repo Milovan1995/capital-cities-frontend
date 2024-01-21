@@ -1,5 +1,9 @@
 <app-navbar [navbarItems]="navbarLinks"></app-navbar>
-<div class="container gameScreen">
+<app-game-options
+  *ngIf="!gameOptionsPicked"
+  (optionsSelected)="onOptionsSelected($event)"
+></app-game-options>
+<div *ngIf="gameOptionsPicked" class="container gameScreen">
   <div *ngIf="currentCapital">
     <h3>Current score {{ score }}</h3>
     <app-capital
