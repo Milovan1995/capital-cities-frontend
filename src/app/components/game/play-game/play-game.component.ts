@@ -20,6 +20,7 @@ export class PlayGameComponent implements OnInit {
   capitals: Capital[] = [];
   currentCapital: Capital;
   score: number = 0;
+  hadCapitalsInCache: boolean;
   errorMessage?: string;
   gameOptionsPicked: boolean = false;
   gameSettings: GameSettings;
@@ -33,11 +34,11 @@ export class PlayGameComponent implements OnInit {
   ngOnInit(): void {
     const capitalsCache = this.capitalCacheService.getCapitals();
     this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
+    this.hadCapitalsInCache = this.capitals.length > 1;
   }
 
   loadCapitals(rId?: number) {
-    //if theres no capitals from cache:
-    if (this.capitals.length < 1) {
+    if (!this.hadCapitalsInCache) {
       if (rId) {
         this.capitalService.getAllCapitals(rId).subscribe({
           next: (capitalsResponse: CapitalsResponse) => {
@@ -69,7 +70,6 @@ export class PlayGameComponent implements OnInit {
           },
         });
       }
-      //if there is capitals in cache:
     } else {
       if (this.gameSettings.region !== 'World') {
         this.capitals = this.capitals.filter(
