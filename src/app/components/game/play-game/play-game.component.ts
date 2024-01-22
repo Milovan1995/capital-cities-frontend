@@ -35,7 +35,7 @@ export class PlayGameComponent implements OnInit {
     this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
   }
 
-  loadCapitalsForGame(rId?: number) {
+  startGame(rId?: number) {
     if (this.capitals.length < 1) {
       this.loadCapitalsWithoutCache(rId);
       return;
@@ -89,9 +89,9 @@ export class PlayGameComponent implements OnInit {
     this.gameOptionsPicked = true;
     if (this.gameSettings.region !== 'World') {
       this.regionId = this.getRegionId(this.gameSettings.region);
-      return this.loadCapitalsForGame(this.regionId);
+      return this.startGame(this.regionId);
     }
-    this.loadCapitalsForGame();
+    this.startGame();
   }
 
   getRegionId(region: string) {
