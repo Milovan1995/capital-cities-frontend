@@ -18,7 +18,7 @@ export class CapitalService {
   getAllCapitals(regionId?: number) {
     return this.http
       .get<CapitalsResponse>(
-        `http://localhost:3000/game/capitals${regionId ? '/' + regionId : ''}`
+        `http://localhost:3000/game/capitals/${regionId ?? ''}`
       )
       .pipe(catchError(this.handleError));
   }

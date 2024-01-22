@@ -12,11 +12,11 @@ export class CapitalCacheService {
     Capital[]
   >(null);
 
-  getCapitals(): Capital[] {
+  getCapitalsFromCache(): Capital[] {
     return this.capitalSubject.value;
   }
 
-  setCapitals(capitals: Capital[]) {
+  setCapitalsInCache(capitals: Capital[]) {
     this.capitalSubject.next(capitals);
   }
 }

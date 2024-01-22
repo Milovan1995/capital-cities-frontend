@@ -24,12 +24,12 @@ export class CapitalsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.capitals = this.capitalCacheService.getCapitals();
+    this.capitals = this.capitalCacheService.getCapitalsFromCache();
     if (!this.capitals) {
       this.capitalService.getAllCapitals().subscribe({
         next: (capitalsResponse: CapitalsResponse) => {
           this.capitals = [...capitalsResponse.capitals];
-          this.capitalCacheService.setCapitals(this.capitals);
+          this.capitalCacheService.setCapitalsInCache(this.capitals);
         },
         error: (error) => {
           console.error('Error loading capitals:', error);
