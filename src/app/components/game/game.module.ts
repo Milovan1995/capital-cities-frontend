@@ -10,6 +10,7 @@ import { GameRoutingModule } from './game-routing.module';
 import { CapitalsListComponent } from './capitals-list/capitals-list.component';
 import { FormsModule } from '@angular/forms';
 import { GameOptionsComponent } from './game-options/game-options.component';
+import { GameResultsComponent } from './game-results/game-results.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { GameOptionsComponent } from './game-options/game-options.component';
     PlayGameComponent,
     CapitalsListComponent,
     GameOptionsComponent,
+    GameResultsComponent,
   ],
   imports: [
     CommonModule,

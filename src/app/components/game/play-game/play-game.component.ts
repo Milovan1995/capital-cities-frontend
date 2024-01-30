@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Link } from '../../models/link';
 import { CapitalService } from '../../../services/capital.service';
 import { CapitalsResponse } from '../../models/capitalsResponse';
 import { Capital } from '../../models/capital';
 import { CapitalCacheService } from '../../../services/capital-cache.service';
 import { GameSettings } from '../../models/gameSettings';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-play-game',
   templateUrl: './play-game.component.html',
   styleUrl: './play-game.component.css',
 })
-export class PlayGameComponent implements OnInit {
+export class PlayGameComponent implements OnDestroy {
   navbarLinks: Link[] = [
     new Link('About', '/about'),
     new Link('Explore', '/capitals'),
@@ -24,22 +25,16 @@ export class PlayGameComponent implements OnInit {
   gameOptionsPicked: boolean = false;
   gameSettings: GameSettings;
   regionId: number = undefined;
+  private capitalSubscription: Subscription;
 
   constructor(
     private capitalService: CapitalService,
     private capitalCacheService: CapitalCacheService
   ) {}
 
-  ngOnInit(): void {
-    const capitalsCache = this.capitalCacheService.getCapitalsFromCache();
-    this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
-  }
-
   startGame(rId?: number) {
-    this.showGameTimer();
-    if (this.gameSettings.timer <= 0) {
-      //todo game over
-    }
+    this.errorMessage = undefined;
+    this.startCountdown();
     if (this.capitals.length < 1) {
       this.loadCapitalsWithoutCache(rId);
       return;
@@ -65,15 +60,18 @@ export class PlayGameComponent implements OnInit {
     this.currentCapital = this.capitals.pop();
   }
 
-  showGameTimer() {
+  startCountdown() {
     const intervalId = setInterval(() => {
-      if (this.gameSettings.timer <= 0) {
+      if (this.gameSettings.timer <= 0 || this.capitals.length === 0) {
         clearInterval(intervalId);
+        this.handleGameOver();
+
         return;
       }
       this.gameSettings.timer--;
     }, 1000);
   }
+  handleGameOver() {}
 
   handleAnswer(isCorrect: boolean) {
     isCorrect && this.score++;
@@ -81,24 +79,28 @@ export class PlayGameComponent implements OnInit {
   }
 
   loadCapitalsWithoutCache(regionID?: number) {
-    this.capitalService.getAllCapitals(regionID).subscribe({
-      next: (capitalsResponse: CapitalsResponse) => {
-        this.capitals = [...capitalsResponse.capitals];
-        if (!regionID) {
-          this.capitalCacheService.setCapitalsInCache([...this.capitals]);
-        }
-      },
-      error: (error) => {
-        console.error('Error while loading capitals', error);
-        this.errorMessage = 'Apologies,maintenence';
-      },
-      complete: () => {
-        this.loadCurrentCapital();
-      },
-    });
+    this.capitalSubscription = this.capitalService
+      .getAllCapitals(regionID)
+      .subscribe({
+        next: (capitalsResponse: CapitalsResponse) => {
+          this.capitals = [...capitalsResponse.capitals];
+          if (!regionID) {
+            this.capitalCacheService.setCapitalsInCache([...this.capitals]);
+          }
+        },
+        error: (error) => {
+          console.error('Error while loading capitals', error);
+          this.errorMessage = 'Apologies,maintenence';
+        },
+        complete: () => {
+          this.loadCurrentCapital();
+        },
+      });
   }
 
   onOptionsSelected(options: GameSettings) {
+    const capitalsCache = this.capitalCacheService.getCapitalsFromCache();
+    this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
     this.gameSettings = options;
     this.gameOptionsPicked = true;
     if (this.gameSettings.region !== 'World') {
@@ -106,6 +108,9 @@ export class PlayGameComponent implements OnInit {
       return this.startGame(this.regionId);
     }
     this.startGame();
+  }
+  onRestartGame() {
+    this.gameOptionsPicked = false;
   }
 
   getRegionId(region: string) {
@@ -121,5 +126,9 @@ export class PlayGameComponent implements OnInit {
       default:
         return 5;
     }
+  }
+
+  ngOnDestroy(): void {
+    if (this.capitalSubscription) this.capitalSubscription.unsubscribe();
   }
 }

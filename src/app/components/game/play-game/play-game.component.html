@@ -4,14 +4,20 @@
   (optionsSelected)="onOptionsSelected($event)"
 ></app-game-options>
 <div *ngIf="gameOptionsPicked" class="container gameScreen">
-  <div *ngIf="currentCapital">
-    <h3>Current score {{ score }}</h3>
-    <h3>Time left : {{ gameSettings.timer }}</h3>
-    <app-capital
-      [capital]="currentCapital"
-      (answeredCorrectly)="handleAnswer($event)"
-    ></app-capital>
-  </div>
+  <ng-container *ngIf="gameSettings.timer > 0">
+    <div *ngIf="currentCapital">
+      <h3>Current score {{ score }}</h3>
+      <h3>Time left : {{ gameSettings.timer }}</h3>
+      <app-capital
+        [capital]="currentCapital"
+        (answeredCorrectly)="handleAnswer($event)"
+      ></app-capital>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="gameSettings.timer <= 0 || capitals.length === 0">
+    <app-game-results [score]="score"></app-game-results>
+    <button (click)="onRestartGame()">Play again</button>
+  </ng-container>
   <h1 *ngIf="errorMessage">
     {{ errorMessage }}
   </h1>
