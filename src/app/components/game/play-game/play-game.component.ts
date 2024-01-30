@@ -36,6 +36,10 @@ export class PlayGameComponent implements OnInit {
   }
 
   startGame(rId?: number) {
+    this.showGameTimer();
+    if (this.gameSettings.timer <= 0) {
+      //todo game over
+    }
     if (this.capitals.length < 1) {
       this.loadCapitalsWithoutCache(rId);
       return;
@@ -59,6 +63,16 @@ export class PlayGameComponent implements OnInit {
     }
 
     this.currentCapital = this.capitals.pop();
+  }
+
+  showGameTimer() {
+    const intervalId = setInterval(() => {
+      if (this.gameSettings.timer <= 0) {
+        clearInterval(intervalId);
+        return;
+      }
+      this.gameSettings.timer--;
+    }, 1000);
   }
 
   handleAnswer(isCorrect: boolean) {

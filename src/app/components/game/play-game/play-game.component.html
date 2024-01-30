@@ -6,6 +6,7 @@
 <div *ngIf="gameOptionsPicked" class="container gameScreen">
   <div *ngIf="currentCapital">
     <h3>Current score {{ score }}</h3>
+    <h3>Time left : {{ gameSettings.timer }}</h3>
     <app-capital
       [capital]="currentCapital"
       (answeredCorrectly)="handleAnswer($event)"
