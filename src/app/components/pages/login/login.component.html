@@ -8,6 +8,7 @@
         class="form-control"
         id="floatingInput"
         placeholder="Username"
+        [(ngModel)]="user.username"
       />
     </div>
     <label for="floatingPassword">Password</label>
@@ -17,11 +18,12 @@
         class="form-control"
         id="floatingPassword"
         placeholder="Password"
+        [(ngModel)]="user.password"
       />
     </div>
     <span
       >Don't have an account? <a routerLink="/pages/register">Register</a></span
     >
-    <button class="btn loginBtn" routerLink="/pages/user">Login</button>
+    <button class="btn loginBtn" (click)="login()">Login</button>
   </div>
 </div>

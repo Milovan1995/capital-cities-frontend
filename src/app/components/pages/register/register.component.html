@@ -8,6 +8,7 @@
         class="form-control"
         id="floatingInput"
         placeholder="Username"
+        [(ngModel)]="user.username"
       />
     </div>
     <label for="floatingPassword">Password</label>
@@ -17,9 +18,20 @@
         class="form-control"
         id="floatingPassword"
         placeholder="Password"
+        [(ngModel)]="user.password"
+      />
+    </div>
+    <label for="floatingConfirmPassword">Confirm Password</label>
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingConfirmPassword"
+        placeholder="Confirm Password"
+        [(ngModel)]="user.confirmPassword"
       />
     </div>
     <span>Already have an account? <a routerLink="/pages/login">Login</a></span>
-    <button class="btn registerBtn" routerLink="/pages/user">Register</button>
+    <button class="btn registerBtn" (click)="register()">Register</button>
   </div>
 </div>
