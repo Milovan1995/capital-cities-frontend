@@ -7,7 +7,12 @@
   <ng-container *ngIf="gameSettings.timer > 0">
     <div *ngIf="currentCapital">
       <h3>Current score {{ score }}</h3>
-      <h3>Time left : {{ gameSettings.timer }}</h3>
+      <h3>
+        Time left :
+        <span [ngClass]="{ 'is-red': gameSettings.timer < 6 }">{{
+          gameSettings.timer
+        }}</span>
+      </h3>
       <app-capital
         [capital]="currentCapital"
         (answeredCorrectly)="handleAnswer($event)"
