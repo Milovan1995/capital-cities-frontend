@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CapitalsResponse } from '../components/models/capitalsResponse';
 import { throwError, Observable, catchError } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,7 @@ export class CapitalService {
   getAllCapitals(regionId?: number) {
     return this.http
       .get<CapitalsResponse>(
-        `http://localhost:3000/game/capitals/${regionId ?? ''}`
+        `${environment.API_URL}/game/capitals/${regionId ?? ''}`
       )
       .pipe(catchError(this.handleError));
   }
