@@ -19,6 +19,5 @@ export class NavbarComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.ngOnInit();
-    window.location.href = '/home';
   }
 }

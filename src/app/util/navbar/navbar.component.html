@@ -21,7 +21,7 @@
       <a routerLink="/pages/login">Login</a>
     </li>
     } @if(isLoggedIn) {
-    <li (click)="logout()">
+    <li (click)="logout()" routerLink="/home">
       <a>Logout</a>
     </li>
     }
