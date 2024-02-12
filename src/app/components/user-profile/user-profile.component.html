@@ -1,9 +1,8 @@
 <app-navbar [navbarItems]="navbarLinks"></app-navbar>
 <div class="container">
   <div class="userPage text-center">
-    <h2>Welcome, {{ username }}!</h2>
+    <h2 *ngIf="!!username">Welcome, {{ username }}!</h2>
     <div class="smallerContainer">
-      <app-button [route]="buttonRoute"></app-button>
       <div class="userContainer">
         <app-achievements></app-achievements>
         <app-user-games></app-user-games>
