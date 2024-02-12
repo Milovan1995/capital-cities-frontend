@@ -9,7 +9,10 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  navbarLinks: Link[] = [new Link('Explore', '/capitals')];
+  navbarLinks: Link[] = [
+    new Link('About', '/about'),
+    new Link('Explore', '/capitals'),
+  ];
   isLoggedIn: boolean;
   constructor(private router: Router, private authService: AuthService) {}
   ngOnInit(): void {
@@ -26,6 +29,11 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.navbarLinks = [
+      new Link('About', '/about'),
+      ,
+      new Link('Explore', '/capitals'),
+    ];
     this.ngOnInit();
   }
 }
