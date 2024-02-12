@@ -111,6 +111,7 @@ export class PlayGameComponent implements OnDestroy {
   }
   onRestartGame() {
     this.gameOptionsPicked = false;
+    this.score = 0;
   }
 
   getRegionId(region: string) {
