@@ -16,15 +16,13 @@
     }
   </ul>
   <ul class="nav navbar-nav navLink navbar-right navRight">
-    @if(hasRoute('/home')||hasRoute('/about')||partiallyContainsRoute('/capitals')){
-    <li routerLink="{{ linkWhenLoggedOut.route }}">
-      <a>{{ linkWhenLoggedOut.name }}</a>
+    @if(!isLoggedIn){
+    <li>
+      <a routerLink="/pages/login">Login</a>
     </li>
-    }
-    @if((partiallyContainsRoute('/pages')&&!hasRoute('/pages/login')&&!hasRoute('/pages/register')))
-    {
-    <li routerLink="{{ linkWhenLoggedIn.route }}">
-      <a>{{ linkWhenLoggedIn.name }}</a>
+    } @if(isLoggedIn) {
+    <li (click)="logout()">
+      <a>Logout</a>
     </li>
     }
   </ul>
