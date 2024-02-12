@@ -15,12 +15,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
-  hasRoute(route: string): boolean {
-    return this.router.url === route;
-  }
-  partiallyContainsRoute(route: string): boolean {
-    return this.router.url.includes(route);
-  }
 
   logout() {
     localStorage.clear();
