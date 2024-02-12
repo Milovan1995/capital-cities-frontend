@@ -8,8 +8,8 @@
       id="avatarImg"
     />
   </div>
-  <ul class="nav navbar-nav navLink" *ngIf="navbarItems.length > 0">
-    @for (link of navbarItems; track $index) {
+  <ul class="nav navbar-nav navLink" *ngIf="navbarLinks.length > 0">
+    @for (link of navbarLinks; track $index) {
     <li routerLink="{{ link.route }}">
       <a>{{ link.name }}</a>
     </li>

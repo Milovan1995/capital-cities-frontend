@@ -9,11 +9,19 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit {
-  @Input() navbarItems: Link[];
+  navbarLinks: Link[] = [new Link('Explore', '/capitals')];
   isLoggedIn: boolean;
   constructor(private router: Router, private authService: AuthService) {}
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
+    !this.isLoggedIn
+      ? this.navbarLinks.push(new Link('Play Now', '/capitals/play-game'))
+      : this.navbarLinks.push(
+          new Link('Profile', '/pages/user'),
+          new Link('Highscores', '/pages/highscores'),
+          new Link('Feedback', '/pages/feedback'),
+          new Link('Play', '/pages/user/play')
+        );
   }
 
   logout() {

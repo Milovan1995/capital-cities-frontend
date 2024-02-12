@@ -12,11 +12,4 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.username = this.authService.getUserData().username;
   }
-  buttonRoute: Link = new Link('Play', '/pages/user/play');
-  navbarLinks: Link[] = [
-    new Link('Profile', '/pages/user'),
-    new Link('Highscores', '/pages/highscores'),
-    new Link('Feedback', '/pages/feedback'),
-    new Link('Play', '/pages/user/play'),
-  ];
 }
