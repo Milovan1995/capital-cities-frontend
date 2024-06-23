@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let c of capitals; let i = index">
+        <tr *ngFor="let c of capitals$ | async; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ c.country }}</td>
           <td>{{ c.capital }}</td>
