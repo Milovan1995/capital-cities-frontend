@@ -17,9 +17,8 @@ export class CapitalsListComponent {
   capitals$: Observable<Capital[]> = this.capitalCacheService
     .getCapitals()
     .pipe(
-      catchError((error) => {
+      catchError(() => {
         this.errorMessage = 'An error occured, please try again later...';
-        console.warn(error);
         return of([]);
       })
     );

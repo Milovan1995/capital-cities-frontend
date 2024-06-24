@@ -23,7 +23,7 @@ export class CapitalCacheService {
       return this.capitalService.getAllCapitals().pipe(
         map((response) => response.capitals),
         catchError((error) => {
-          console.error(error);
+          console.error('Error caught in capital cache service', error);
           return throwError(() => error);
         })
       );
