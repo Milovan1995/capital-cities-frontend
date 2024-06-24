@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Link } from '../../models/link';
-import { CapitalService } from '../../../services/capital.service';
 import { Capital } from '../../models/capital';
 import { CapitalCacheService } from '../../../services/capital-cache.service';
-import { Observable, catchError, defer, map, of } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-capitals-list',
