@@ -35,10 +35,10 @@ export class PlayGameComponent implements OnDestroy {
   startGame(rId?: number) {
     this.errorMessage = undefined;
     this.startCountdown();
-    if (this.capitals.length < 1) {
-      this.loadCapitalsWithoutCache(rId);
-      return;
-    }
+    // if (this.capitals.length < 1) {
+    //   this.loadCapitalsWithoutCache(rId);
+    //   return;
+    // }
     if (this.gameSettings.region !== 'World') {
       this.capitals = this.capitals.filter(
         (element) => element.region == this.gameSettings.region
@@ -78,37 +78,37 @@ export class PlayGameComponent implements OnDestroy {
     this.loadCurrentCapital();
   }
 
-  loadCapitalsWithoutCache(regionID?: number) {
-    this.capitalSubscription = this.capitalService
-      .getAllCapitals(regionID)
-      .subscribe({
-        next: (capitalsResponse: CapitalsResponse) => {
-          this.capitals = [...capitalsResponse.capitals];
-          if (!regionID) {
-            this.capitalCacheService.setCapitalsInCache([...this.capitals]);
-          }
-        },
-        error: (error) => {
-          console.error('Error while loading capitals', error);
-          this.errorMessage = 'Apologies,maintenence';
-        },
-        complete: () => {
-          this.loadCurrentCapital();
-        },
-      });
-  }
+  // loadCapitalsWithoutCache(regionID?: number) {
+  //   this.capitalSubscription = this.capitalService
+  //     .getAllCapitals(regionID)
+  //     .subscribe({
+  //       next: (capitalsResponse: CapitalsResponse) => {
+  //         this.capitals = [...capitalsResponse.capitals];
+  //         if (!regionID) {
+  //           this.capitalCacheService.setCapitalsInCache([...this.capitals]);
+  //         }
+  //       },
+  //       error: (error) => {
+  //         console.error('Error while loading capitals', error);
+  //         this.errorMessage = 'Apologies,maintenence';
+  //       },
+  //       complete: () => {
+  //         this.loadCurrentCapital();
+  //       },
+  //     });
+  // }
 
-  onOptionsSelected(options: GameSettings) {
-    const capitalsCache = this.capitalCacheService.getCapitalsFromCache();
-    this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
-    this.gameSettings = options;
-    this.gameOptionsPicked = true;
-    if (this.gameSettings.region !== 'World') {
-      this.regionId = this.getRegionId(this.gameSettings.region);
-      return this.startGame(this.regionId);
-    }
-    this.startGame();
-  }
+  // onOptionsSelected(options: GameSettings) {
+  //   const capitalsCache = this.capitalCacheService.getCapitalsFromCache();
+  //   this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
+  //   this.gameSettings = options;
+  //   this.gameOptionsPicked = true;
+  //   if (this.gameSettings.region !== 'World') {
+  //     this.regionId = this.getRegionId(this.gameSettings.region);
+  //     return this.startGame(this.regionId);
+  //   }
+  //   this.startGame();
+  // }
   onRestartGame() {
     this.gameOptionsPicked = false;
     this.score = 0;

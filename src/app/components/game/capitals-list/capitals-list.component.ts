@@ -15,35 +15,16 @@ export class CapitalsListComponent {
     new Link('About', '/about'),
     new Link('Play Now', '/capitals/play-game'),
   ];
-  capitals$: Observable<Capital[]> = this.loadCapitals();
-  test$: Observable<Capital[]> = this.capitalService
-    .getAllCapitals()
-    .pipe(map((response) => response.capitals));
+  capitals$: Observable<Capital[]> = this.capitalCacheService
+    .getCapitals()
+    .pipe(
+      catchError((error) => {
+        this.errorMessage = 'An error occured, please try again later...';
+        console.warn(error);
+        return of([]);
+      })
+    );
   errorMessage?: string;
 
-  constructor(
-    private capitalService: CapitalService,
-    private capitalCacheService: CapitalCacheService
-  ) {}
-  private loadCapitals(): Observable<Capital[]> {
-    return defer(() => {
-      const cachedCapitals = this.capitalCacheService.getCapitalsFromCache();
-      if (cachedCapitals && cachedCapitals.length > 0) {
-        return of(cachedCapitals);
-      } else {
-        return this.capitalService.getAllCapitals().pipe(
-          map((response) => {
-            this.capitalCacheService.setCapitalsInCache(response.capitals);
-            return response.capitals;
-          }),
-          catchError((error) => {
-            console.error(error);
-            this.errorMessage =
-              'Apologies, our server might be undergoing maintenance';
-            return of([]);
-          })
-        );
-      }
-    });
-  }
+  constructor(private capitalCacheService: CapitalCacheService) {}
 }
