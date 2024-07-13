@@ -7,5 +7,9 @@
   "play": "Igraj",
   "play-now": "Igraj sada",
   "login": "Prijavi se",
-  "logout": "Odjavi se"
+  "logout": "Odjavi se",
+  "num": "Br",
+  "country": "Država",
+  "capital": "Grad",
+  "region": "Region"
 }

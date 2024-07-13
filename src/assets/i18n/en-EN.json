@@ -7,5 +7,9 @@
   "play": "Play",
   "play-now": "Play now",
   "login": "Login",
-  "logout": "Logout"
+  "logout": "Logout",
+  "num": "No",
+  "country": "Country",
+  "capital": "Capital",
+  "region": "Region"
 }
