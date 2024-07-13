@@ -19,3 +19,14 @@
 .navbar {
   font-family: "Audiowide", sans-serif;
 }
+.language-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem;
+}
+.language-options img:hover {
+  cursor: pointer;
+}

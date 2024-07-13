@@ -11,6 +11,7 @@ import { CapitalsListComponent } from './capitals-list/capitals-list.component';
 import { FormsModule } from '@angular/forms';
 import { GameOptionsComponent } from './game-options/game-options.component';
 import { GameResultsComponent } from './game-results/game-results.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { GameResultsComponent } from './game-results/game-results.component';
     UtilModule,
     GameRoutingModule,
     FormsModule,
+    TranslateModule,
   ],
   exports: [
     GameComponent,

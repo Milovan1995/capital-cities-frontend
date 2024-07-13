@@ -8,21 +8,33 @@
       id="avatarImg"
     />
   </div>
+  <div class="nav navbar-nav navbar-right navLink language-options">
+    <img
+      src="/assets/images/748048_flag_montenegro_icon.png"
+      alt="MNE"
+      (click)="switchLanguage(languages.me)"
+    />
+    <img
+      src="/assets/images/748050_flag_usa_icon.png"
+      alt="EN"
+      (click)="switchLanguage(languages.en)"
+    />
+  </div>
   <ul class="nav navbar-nav navLink" *ngIf="navbarLinks.length > 0">
     @for (link of navbarLinks; track $index) {
     <li routerLink="{{ link.route }}">
-      <a>{{ link.name }}</a>
+      <a>{{ link.name | translate }}</a>
     </li>
     }
   </ul>
   <ul class="nav navbar-nav navLink navbar-right navRight">
     @if(!isLoggedIn){
     <li>
-      <a routerLink="/pages/login">Login</a>
+      <a routerLink="/pages/login">{{ "login" | translate }}</a>
     </li>
     } @if(isLoggedIn) {
     <li (click)="logout()" routerLink="/home">
-      <a>Logout</a>
+      <a>{{ "logout" | translate }}</a>
     </li>
     }
   </ul>
