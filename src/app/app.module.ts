@@ -8,9 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import {
   HttpClient,
-  HttpClientModule,
-  provideHttpClient,
   withFetch,
+  provideHttpClient,
+  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { UtilModule } from './util/util.module';
 import { HeroComponentComponent } from './components/app/hero-component/hero-component.component';
@@ -28,10 +28,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     AboutComponent,
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     UtilModule,
     TranslateModule.forRoot({
       loader: {
@@ -41,7 +41,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [provideClientHydration(), provideHttpClient(withFetch())],
-  bootstrap: [AppComponent],
+  providers: [
+    provideClientHydration(),
+    provideHttpClient(withFetch()),
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
 })
 export class AppModule {}
