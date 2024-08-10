@@ -29,5 +29,12 @@
     "australia": "Australia",
     "north-and-south-america": "North and South America",
     "oceania": "Oceania"
+  },
+  "login-component": {
+    "username": "Username",
+    "password": "Password",
+    "dont-have-login": "Don't have an account?",
+    "login": "Login",
+    "register": "Register"
   }
 }

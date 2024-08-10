@@ -1,29 +1,38 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="formsText">
+  <div class="formsText" [formGroup]="form">
     <div class="form-floating">
-      <label for="floatingInput">Username</label>
-      <!-- <input
+      <label for="floatingInput">{{
+        "login-component.username" | translate
+      }}</label>
+      <input
         type="text"
         class="form-control"
         id="floatingInput"
         placeholder="Username"
-        [(ngModel)]="user.username"
-      /> -->
+        formControlName="username"
+      />
     </div>
-    <label for="floatingPassword">Password</label>
+    <label for="floatingPassword">{{
+      "login-component.password" | translate
+    }}</label>
     <div class="form-floating">
-      <!-- <input
+      <input
         type="password"
         class="form-control"
         id="floatingPassword"
         placeholder="Password"
-        [(ngModel)]="user.password"
-      /> -->
+        formControlName="password"
+      />
     </div>
     <span
-      >Don't have an account? <a routerLink="/pages/register">Register</a></span
+      >{{ "login-component.dont-have-login" | translate }}
+      <a routerLink="/pages/register">{{
+        "login-component.register" | translate
+      }}</a></span
     >
-    <button class="btn loginBtn" (click)="login()">Login</button>
+    <button class="btn loginBtn" (click)="login()">
+      {{ "login-component.login" | translate }}
+    </button>
   </div>
 </div>

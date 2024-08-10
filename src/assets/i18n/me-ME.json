@@ -1,5 +1,5 @@
 {
-  "about": "O nama",
+  "about": "Informacije",
   "explore": "Istraži",
   "profile": "Profil",
   "highscores": "Najbolji rezultati",
@@ -29,5 +29,12 @@
     "australia": "Australija",
     "north-and-south-america": "Sjeverna i Južna Amerika",
     "oceania": "Okeanija"
+  },
+  "login-component": {
+    "username": "Korisničko ime",
+    "password": "Lozinka",
+    "dont-have-login": "Nemate nalog?",
+    "login": "Prijavi se",
+    "register": "Registracija"
   }
 }

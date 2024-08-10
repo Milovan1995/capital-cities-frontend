@@ -4,11 +4,18 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UtilModule } from '../../util/util.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
-  imports: [CommonModule, PagesRoutingModule, UtilModule, FormsModule],
+  imports: [
+    CommonModule,
+    PagesRoutingModule,
+    UtilModule,
+    ReactiveFormsModule,
+    TranslateModule,
+  ],
   exports: [RegisterComponent, LoginComponent],
 })
 export class PagesModule {}
