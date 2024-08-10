@@ -11,5 +11,23 @@
   "num": "No",
   "country": "Country",
   "capital": "Capital",
-  "region": "Region"
+  "region": "Region",
+  "sentences": {
+    "guess-the-capital": "Guess the capital"
+  },
+  "game-options": {
+    "choose-settings": "Choose game settings:",
+    "timer-options": "Timer options",
+    "seconds": "seconds",
+    "start-game": "Start game"
+  },
+  "regions": {
+    "world": "World",
+    "europe": "Europe",
+    "asia": "Asia",
+    "africa": "Africa",
+    "australia": "Australia",
+    "north-and-south-america": "North and South America",
+    "oceania": "Oceania"
+  }
 }

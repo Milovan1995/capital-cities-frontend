@@ -1,6 +1,8 @@
 import { Component, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { GameSettings } from '../../models/gameSettings';
+import { GameSettings, timers } from '../../models/gameSettings';
+import { regions } from '../../models/region';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-game-options',
@@ -10,17 +12,16 @@ import { GameSettings } from '../../models/gameSettings';
 export class GameOptionsComponent {
   @Output() optionsSelected: EventEmitter<GameSettings> =
     new EventEmitter<GameSettings>();
-
-  gameSettings: GameSettings = {
-    region: 'World',
-    timer: 60,
-  };
-
+  form: FormGroup = new FormGroup({
+    region: new FormControl('World', Validators.required),
+    timer: new FormControl(60, Validators.required),
+  });
+  readonly regions = regions;
+  readonly timers = timers;
   onSubmit() {
-    console.log(this.gameSettings);
-    this.optionsSelected.emit({
-      region: this.gameSettings.region,
-      timer: this.gameSettings.timer,
-    });
+    if (this.form.invalid) {
+      return;
+    }
+    this.optionsSelected.emit(this.form.value);
   }
 }

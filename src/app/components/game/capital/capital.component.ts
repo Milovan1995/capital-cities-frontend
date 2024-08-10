@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Capital } from '../../models/capital';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-capital',
@@ -10,12 +11,13 @@ export class CapitalComponent {
   @Input() capital: Capital;
   @Output() answeredCorrectly: EventEmitter<boolean> =
     new EventEmitter<boolean>();
-  answer: string;
+  form: FormGroup = new FormGroup({
+    answer: new FormControl(''),
+  });
   onUserAnswer() {
-    let currentAnswer = this.answer ? this.answer : '';
-    this.answer = undefined;
     this.answeredCorrectly.emit(
-      currentAnswer.toUpperCase() === this.capital.capital.toUpperCase()
+      this.form.get('answer').value.toUpperCase() ===
+        this.capital.capital.toUpperCase()
     );
   }
 }

@@ -1,10 +1,12 @@
 <div class="container gameComponent">
-  <h1>Guess the capital</h1>
+  <h1>{{ "sentences.guess-the-capital" | translate }}</h1>
   <h3>{{ capital.country }}</h3>
-  <!-- <input
-    type="text"
-    [(ngModel)]="answer"
-    placeholder="Enter capital"
-    (keyup.enter)="onUserAnswer()"
-  /> -->
+  <div [formGroup]="form">
+    <input
+      type="text"
+      formControlName="answer"
+      placeholder="Enter capital"
+      (keyup.enter)="onUserAnswer()"
+    />
+  </div>
 </div>
