@@ -1,7 +1,7 @@
 <div class="container mt-5" [formGroup]="form">
   <h3>{{ "game-options.choose-settings" | translate }}</h3>
   <div class="form-group">
-    <label for="regionSelect">Region:</label>
+    <label for="regionSelect">{{ "region" | translate }}</label>
     <select class="form-control" formControlName="region" id="regionSelect">
       @for(region of regions;track region.value){
       <option [value]="region.value">{{ region.name | translate }}</option>

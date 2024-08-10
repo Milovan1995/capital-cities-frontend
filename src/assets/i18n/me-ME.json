@@ -11,5 +11,23 @@
   "num": "Br",
   "country": "Država",
   "capital": "Grad",
-  "region": "Region"
+  "region": "Regija:",
+  "sentences": {
+    "guess-the-capital": "Pogodi glavni grad"
+  },
+  "game-options": {
+    "choose-settings": "Izaberi opcije:",
+    "timer-options": "Trajanje partije:",
+    "seconds": "sekundi",
+    "start-game": "Započni igru"
+  },
+  "regions": {
+    "world": "Svijet",
+    "europe": "Evropa",
+    "asia": "Azija",
+    "africa": "Afrika",
+    "australia": "Australija",
+    "north-and-south-america": "Sjeverna i Južna Amerika",
+    "oceania": "Okeanija"
+  }
 }
