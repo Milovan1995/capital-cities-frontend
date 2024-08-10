@@ -12,6 +12,12 @@
   "country": "Country",
   "capital": "Capital",
   "region": "Region",
+  "messages": {
+    "enter-both-fields": "Enter both fields!",
+    "enter-all-fields": "Enter all fields!",
+    "passwords-dont-match": "Passwords do not match",
+    "something-wrong": "Something went wrong."
+  },
   "sentences": {
     "guess-the-capital": "Guess the capital"
   },
@@ -35,6 +41,9 @@
     "password": "Password",
     "dont-have-login": "Don't have an account?",
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "register-now": "Register",
+    "already-have-login": "Already have an account?",
+    "confirm-password": "Confirm Password"
   }
 }

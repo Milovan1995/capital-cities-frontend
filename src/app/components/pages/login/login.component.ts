@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Link } from '../../models/link';
-import { User } from '../../models/user';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +12,19 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
   navbarLinks: Link[] = [new Link('Home', '/home')];
-
-  user: User = new User();
   form: FormGroup = new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   });
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private _trans: TranslateService
+  ) {}
 
   login() {
     if (this.form.invalid) {
-      alert('Enter both fields!');
+      alert(this._trans.instant('messages.enter-both-fields'));
       return;
     }
     this.auth.login(this.form.value).subscribe({

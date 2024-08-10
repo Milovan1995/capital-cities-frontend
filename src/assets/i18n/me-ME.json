@@ -12,6 +12,12 @@
   "country": "Država",
   "capital": "Grad",
   "region": "Regija:",
+  "messages": {
+    "enter-both-fields": "Unesi vrijednosti u oba polja!",
+    "enter-all-fields": "Unesi vrijednost za sva polja!",
+    "passwords-dont-match": "Lozinke se ne poklapaju",
+    "something-wrong": "Došlo je do greške."
+  },
   "sentences": {
     "guess-the-capital": "Pogodi glavni grad"
   },
@@ -33,8 +39,11 @@
   "login-component": {
     "username": "Korisničko ime",
     "password": "Lozinka",
-    "dont-have-login": "Nemate nalog?",
+    "dont-have-login": "Nemaš nalog?",
     "login": "Prijavi se",
-    "register": "Registracija"
+    "register": "Registracija",
+    "register-now": "Registruj se",
+    "already-have-login": "Već imaš korisnički nalog?",
+    "confirm-password": "Potvrdi lozinku"
   }
 }

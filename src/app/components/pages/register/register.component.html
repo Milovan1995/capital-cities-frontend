@@ -1,37 +1,47 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="formsText">
+  <div class="formsText" [formGroup]="form">
     <div class="form-floating">
-      <label for="floatingInput">Username</label>
-      <!-- <input
+      <label for="floatingInput">{{
+        "login-component.username" | translate
+      }}</label>
+      <input
         type="text"
         class="form-control"
         id="floatingInput"
-        placeholder="Username"
-        [(ngModel)]="user.username"
-      /> -->
+        formControlName="username"
+      />
     </div>
-    <label for="floatingPassword">Password</label>
+    <label for="floatingPassword">{{
+      "login-component.password" | translate
+    }}</label>
     <div class="form-floating">
-      <!-- <input
+      <input
         type="password"
         class="form-control"
         id="floatingPassword"
-        placeholder="Password"
-        [(ngModel)]="user.password"
-      /> -->
+        formControlName="password"
+      />
     </div>
-    <label for="floatingConfirmPassword">Confirm Password</label>
+    <label for="floatingConfirmPassword">{{
+      "login-component.confirm-password" | translate
+    }}</label>
     <div class="form-floating">
-      <!-- <input
+      <input
         type="password"
         class="form-control"
         id="floatingConfirmPassword"
-        placeholder="Confirm Password"
-        [(ngModel)]="user.confirmPassword"
-      /> -->
+        formControlName="confirmPassword"
+      />
     </div>
-    <span>Already have an account? <a routerLink="/pages/login">Login</a></span>
-    <button class="btn registerBtn" (click)="register()">Register</button>
+    <span
+      >{{ "login-component.already-have-login" | translate }}
+      <a routerLink="/pages/login">{{
+        "login-component.login" | translate
+      }}</a></span
+    >
+    <button class="btn registerBtn" (click)="register()">
+      {{ "login-component.register-now" | translate }}
+    </button>
   </div>
 </div>
