@@ -1,4 +1,10 @@
 {
+  "about-component": {
+    "about": "O Projektu - Kviz o Glavnim Gradovima",
+    "first": "'Capital Cities Quiz Game' je dinamičan i edukativan web projekat osmišljen da izazove korisnike da testiraju svoje znanje o glavnim gradovima svijeta. Razvijen korišćenjem sofisticiranog tehnološkog staka, aplikacija integriše Angular za front-end, Express.js i Node.js za back-end, i PostgreSQL kao sistem za upravljanje relacionim bazama podataka.",
+    "second": "Front-end, koji pokreće Angular, pruža vizuelno privlačan i responzivan korisnički interfejs, omogućavajući korisnicima da uživaju u kvizu. Korisnici mogu lako da se kreću kroz igru kviza, koja sadrži nasumično generisana pitanja za testiranje znanja o glavnim gradovima širom svijeta.",
+    "third": "Na serverskoj strani, Express.js u kombinaciji sa Node.js formira čvrstu osnovu za obradu logike na strani servera, rutiranje i kreiranje API-ja. Ova kombinacija omogućava efikasnu komunikaciju između korisničkog interfejsa i PostgreSQL baze podataka, doprinoseći glatkom i responzivnom ukupnom iskustvu. Funkcionalnost back-enda obuhvata registraciju korisnika, siguran login, i napredne funkcije kao što su personalizovani korisnički profili za praćenje istorije kvizova i visokih rezultata. Uključivanje Express.js omogućava kreiranje interaktivne tabele sa najboljim rezultatima, podstičući zdravu konkurenciju među korisnicima. Osnovu cijelog sistema čini PostgreSQL, moćan i skalabilan sistem za upravljanje relacijonim bazama podataka. PostgreSQL efikasno upravlja skladištenjem, preuzimanjem i manipulacijom podataka, podržavajući ključne funkcije kao što su korisnički nalozi, praćenje istorije kvizova i funkcionalnost tabele sa najboljim rezultatima."
+  },
   "current-score": "Trenutni rezultat",
   "time-left": "Preostalo vrijeme :",
   "play-again": "Ponovi igru",
