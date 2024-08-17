@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Link } from '../../models/link';
 import { CapitalService } from '../../../services/capital.service';
-import { CapitalsResponse } from '../../models/capitalsResponse';
 import { Capital } from '../../models/capital';
 import { CapitalCacheService } from '../../../services/capital-cache.service';
 import { GameSettings } from '../../models/gameSettings';
