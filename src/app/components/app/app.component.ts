@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -6,9 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   showNavbar: boolean = true;
-  constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en-EN');
+  constructor(private translate: TranslateService) {}
+
+  ngOnInit(): void {
+    this.translate.setDefaultLang('en-EN');
   }
 }
