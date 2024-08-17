@@ -3,6 +3,7 @@ import { Link } from '../../models/link';
 import { Capital } from '../../models/capital';
 import { CapitalCacheService } from '../../../services/capital-cache.service';
 import { Observable, catchError, of } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-capitals-list',
@@ -18,11 +19,14 @@ export class CapitalsListComponent {
     .getCapitals()
     .pipe(
       catchError(() => {
-        this.errorMessage = 'An error occured, please try again later...';
+        this.errorMessage = this._trans.instant('error');
         return of([]);
       })
     );
   errorMessage?: string;
 
-  constructor(private capitalCacheService: CapitalCacheService) {}
+  constructor(
+    private capitalCacheService: CapitalCacheService,
+    private _trans: TranslateService
+  ) {}
 }

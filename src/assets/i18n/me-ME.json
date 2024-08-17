@@ -1,4 +1,5 @@
 {
+  "error": "Došlo je do greške.",
   "about-component": {
     "about": "O Projektu - Kviz o Glavnim Gradovima",
     "first": "'Capital Cities Quiz Game' je dinamičan i edukativan web projekat osmišljen da izazove korisnike da testiraju svoje znanje o glavnim gradovima svijeta. Razvijen korišćenjem sofisticiranog tehnološkog staka, aplikacija integriše Angular za front-end, Express.js i Node.js za back-end, i PostgreSQL kao sistem za upravljanje relacionim bazama podataka.",
