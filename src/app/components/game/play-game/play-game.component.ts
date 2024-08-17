@@ -98,8 +98,9 @@ export class PlayGameComponent implements OnDestroy {
   //     });
   // }
 
+  // TODO
   // onOptionsSelected(options: GameSettings) {
-  //   const capitalsCache = this.capitalCacheService.getCapitalsFromCache();
+  //   const capitalsCache = this.capitalCacheService.getCapitals();
   //   this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
   //   this.gameSettings = options;
   //   this.gameOptionsPicked = true;

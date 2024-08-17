@@ -24,4 +24,3 @@ export class CapitalService {
       .pipe(catchError(this.handleError));
   }
 }
-// /api/game/capitals/:regionId?

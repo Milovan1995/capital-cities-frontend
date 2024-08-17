@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
+<!--  TODO -->
 <app-game-options *ngIf="!gameOptionsPicked"></app-game-options>
+<!-- TODO -->
 <!-- (optionsSelected)="onOptionsSelected($event)" -->
 <div *ngIf="gameOptionsPicked" class="container gameScreen">
   <ng-container *ngIf="gameSettings.timer > 0">
