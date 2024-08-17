@@ -14,4 +14,3 @@ export class HighscoresService {
     );
   }
 }
-// api/scores/highscores/:duration/:limit

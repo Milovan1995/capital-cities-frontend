@@ -35,6 +35,8 @@ export class PlayGameComponent implements OnDestroy {
   startGame(rId?: number) {
     this.errorMessage = undefined;
     this.startCountdown();
+
+    // TODO
     // if (this.capitals.length < 1) {
     //   this.loadCapitalsWithoutCache(rId);
     //   return;
@@ -78,6 +80,7 @@ export class PlayGameComponent implements OnDestroy {
     this.loadCurrentCapital();
   }
 
+  // Todo
   // loadCapitalsWithoutCache(regionID?: number) {
   //   this.capitalSubscription = this.capitalService
   //     .getAllCapitals(regionID)
