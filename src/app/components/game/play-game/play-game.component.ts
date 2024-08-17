@@ -35,7 +35,6 @@ export class PlayGameComponent implements OnDestroy {
   startGame(rId?: number) {
     this.errorMessage = undefined;
     this.startCountdown();
-
     // TODO
     // if (this.capitals.length < 1) {
     //   this.loadCapitalsWithoutCache(rId);
