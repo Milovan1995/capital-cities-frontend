@@ -17,25 +17,31 @@ export class NavbarComponent implements OnInit {
   ];
   isLoggedIn: boolean;
   constructor(
-    private router: Router,
     private authService: AuthService,
     private _trans: TranslateService
   ) {}
+
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
     !this.isLoggedIn
-      ? this.navbarLinks.push(new Link('play-now', '/capitals/play-game'))
-      : this.navbarLinks.push(
+      ? (this.navbarLinks = [
+          ...this.navbarLinks,
+          new Link('play-now', '/capitals/play-game'),
+        ])
+      : (this.navbarLinks = [
+          ...this.navbarLinks,
           new Link('profile', '/pages/user'),
           new Link('highscores', '/pages/highscores'),
           new Link('feedback', '/pages/feedback'),
-          new Link('play', '/pages/user/play')
-        );
+          new Link('play', '/pages/user/play'),
+        ]);
   }
+
   languages = {
     en: LanguageOptions.EN,
     me: LanguageOptions.MNE,
   };
+
   switchLanguage(language: LanguageOptions) {
     this._trans.use(language);
   }
