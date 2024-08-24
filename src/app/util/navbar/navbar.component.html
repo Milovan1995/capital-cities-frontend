@@ -13,11 +13,13 @@
       src="/assets/images/748048_flag_montenegro_icon.png"
       alt="MNE"
       (click)="switchLanguage(languages.me)"
+      [ngStyle]="{ opacity: language === languages.me ? 1 : 0.4 }"
     />
     <img
       src="/assets/images/748050_flag_usa_icon.png"
       alt="EN"
       (click)="switchLanguage(languages.en)"
+      [ngStyle]="{ opacity: language === languages.me ? 0.4 : 1 }"
     />
   </div>
   <ul class="nav navbar-nav navLink" *ngIf="navbarLinks.length > 0">

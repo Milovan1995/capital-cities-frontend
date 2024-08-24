@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Link } from '../../components/models/link';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageOptions } from '../languages';
@@ -15,6 +14,7 @@ export class NavbarComponent implements OnInit {
     new Link('about', '/about'),
     new Link('explore', '/capitals'),
   ];
+  language: LanguageOptions = LanguageOptions.EN;
   isLoggedIn: boolean;
   constructor(
     private authService: AuthService,
@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this._trans.defaultLang);
     this.isLoggedIn = this.authService.isLoggedIn();
     !this.isLoggedIn
       ? (this.navbarLinks = [
@@ -44,6 +45,7 @@ export class NavbarComponent implements OnInit {
 
   switchLanguage(language: LanguageOptions) {
     this._trans.use(language);
+    this.language = language;
   }
 
   logout() {
