@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
     new Link('about', '/about'),
     new Link('explore', '/capitals'),
   ];
-  language: LanguageOptions = LanguageOptions.EN;
+  language: LanguageOptions;
   isLoggedIn: boolean;
   constructor(
     private authService: AuthService,
@@ -22,6 +22,7 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.language = this._trans.currentLang as LanguageOptions;
     this.isLoggedIn = this.authService.isLoggedIn();
     !this.isLoggedIn
       ? (this.navbarLinks = [
