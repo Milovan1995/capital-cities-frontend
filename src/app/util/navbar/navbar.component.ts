@@ -22,7 +22,6 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this._trans.defaultLang);
     this.isLoggedIn = this.authService.isLoggedIn();
     !this.isLoggedIn
       ? (this.navbarLinks = [
