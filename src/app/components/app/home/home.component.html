@@ -1,15 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container homePage">
-  <!-- <h1>{{ "home-page.heading.first" | translate }}</h1>
-  <div class="articles">
-    <h3>{{ "home-page.heading.second" | translate }}</h3>
-    <p>
-      {{ "home-page.content.first" | translate }}
-    </p>
-    <h3>{{ "home-page.heading.third" | translate }}</h3>
-    <p>
-      {{ "home-page.content.second" | translate }}
-    </p>
-  </div> -->
-  {{ time$ | async }}
+  <div class="time">{{ time$ | async }}</div>
+  <div class="globe-image">
+    <img src="/assets/images/globe.png" alt="globe" />
+  </div>
 </div>
