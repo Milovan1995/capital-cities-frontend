@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container" [formGroup]="form">
+  <input type="text" formControlName="term" />
   <ng-container *ngIf="!errorMessage">
     <table class="table table-striped">
       <thead>
@@ -10,8 +11,8 @@
           <th>{{ "region" | translate }}</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let c of capitals$ | async; let i = index">
+      <tbody *ngIf="capitals$()">
+        <tr *ngFor="let c of capitals$(); let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ c.country }}</td>
           <td>{{ c.capital }}</td>
