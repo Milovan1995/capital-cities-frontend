@@ -1,3 +1,13 @@
 .container table {
   margin-bottom: 3rem;
 }
+
+input {
+  margin-bottom: 3rem;
+  width: 40%;
+  border-radius: 1rem;
+  border-color: var(--linkColor);
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
+  font-family: "Audiowide", sans-serif;
+}

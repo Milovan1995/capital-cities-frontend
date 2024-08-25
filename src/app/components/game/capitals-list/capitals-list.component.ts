@@ -50,8 +50,12 @@ export class CapitalsListComponent implements OnInit, OnDestroy {
     this.capitals$ = computed(() => {
       return this.capitalsList().filter(
         (capital) =>
-          capital.capital.toLowerCase().includes(this.searchTerm$()) ||
-          capital.country.toLowerCase().includes(this.searchTerm$())
+          capital.capital
+            .toLowerCase()
+            .includes(this.searchTerm$().toLowerCase()) ||
+          capital.country
+            .toLowerCase()
+            .includes(this.searchTerm$().toLowerCase())
       );
     });
   }

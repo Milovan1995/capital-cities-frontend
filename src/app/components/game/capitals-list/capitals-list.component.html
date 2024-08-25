@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 <div class="container" [formGroup]="form">
-  <input type="text" formControlName="term" />
+  <input
+    type="text"
+    formControlName="term"
+    [placeholder]="'search-by-name' | translate"
+  />
   <ng-container *ngIf="!errorMessage">
     <table class="table table-striped">
       <thead>
