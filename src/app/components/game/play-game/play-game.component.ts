@@ -157,6 +157,20 @@ export class PlayGameComponent implements OnDestroy {
     this.capitalSubscription?.unsubscribe();
   }
 
+  getRegionTranslationKey(regionName: string): string {
+    const regionKeyMap: Record<string, string> = {
+      World: 'regions.world',
+      Europe: 'regions.europe',
+      Asia: 'regions.asia',
+      Africa: 'regions.africa',
+      Australia: 'regions.australia',
+      'North and South America': 'regions.north-and-south-america',
+      Oceania: 'regions.oceania',
+    };
+
+    return regionKeyMap[regionName] ?? regionName;
+  }
+
   private clearCountdown() {
     if (this.countdownIntervalId) {
       clearInterval(this.countdownIntervalId);

@@ -45,9 +45,21 @@
   },
   "game-options": {
     "choose-settings": "Choose game settings:",
+    "subtitle": "Pick a region and round length, then jump straight into the next challenge.",
+    "quick-start": "Quick start",
+    "loading": "Loading available game settings...",
+    "region-hint": "Choose how wide you want the geography challenge to be.",
+    "duration-hint": "Longer rounds let you build a bigger streak.",
+    "selected-region": "Selected region",
+    "selected-duration": "Round length",
     "timer-options": "Timer options",
     "seconds": "seconds",
     "start-game": "Start game"
+  },
+  "game-play": {
+    "live-challenge": "Challenge live",
+    "round-length": "Round length",
+    "region": "Region"
   },
   "regions": {
     "world": "World",

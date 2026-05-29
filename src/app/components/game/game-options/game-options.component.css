@@ -1,0 +1,153 @@
+.game-options-shell {
+  padding: 3rem 1rem 2rem;
+}
+
+.game-options-panel {
+  background: rgba(254, 254, 254, 0.88);
+  border: 1px solid rgba(25, 4, 130, 0.12);
+  border-radius: 24px;
+  padding: 2.5rem;
+}
+
+.game-options-copy h3 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 3.2rem;
+}
+
+.game-options-eyebrow {
+  color: var(--secondTextColor);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.game-options-description,
+.field-hint,
+.game-options-loading,
+.game-options-error,
+.summary-stat span {
+  color: rgba(25, 4, 130, 0.72);
+}
+
+.game-options-error {
+  background: rgba(196, 42, 42, 0.1);
+  border-radius: 14px;
+  color: #8f2020;
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+}
+
+.game-options-loading {
+  margin-top: 1.25rem;
+}
+
+.game-options-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.75rem;
+}
+
+.game-options-card {
+  background: linear-gradient(180deg, rgba(213, 227, 227, 0.45), rgba(255, 255, 255, 0.92));
+  border-radius: 22px;
+  padding: 1.5rem;
+}
+
+.game-options-card label {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 0.35rem;
+}
+
+.duration-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.duration-option {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: auto auto 1fr;
+  padding: 0.9rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.duration-option:hover {
+  border-color: rgba(25, 4, 130, 0.2);
+}
+
+.duration-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.duration-unit {
+  color: rgba(25, 4, 130, 0.7);
+}
+
+.game-options-summary {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.75rem 0 1.25rem;
+}
+
+.summary-stat {
+  background: #190482;
+  border-radius: 16px;
+  color: #fefefe;
+  padding: 1rem 1.25rem;
+}
+
+.summary-stat span {
+  color: rgba(254, 254, 254, 0.72);
+}
+
+.summary-stat strong {
+  font-size: 2rem;
+}
+
+.game-options-button {
+  border: none;
+  border-radius: 999px;
+  font-size: 1.8rem;
+  padding: 1rem 2.2rem;
+}
+
+@media (max-width: 767px) {
+  .game-options-shell { padding-left: 1rem; padding-right: 1rem; }
+
+  .game-options-panel {
+    border-radius: 22px;
+    padding: 1.5rem;
+  }
+
+  .game-options-copy h3 {
+    font-size: 2.5rem;
+  }
+
+  .game-options-grid,
+  .game-options-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .duration-option {
+    grid-template-columns: auto 1fr;
+  }
+
+  .duration-unit {
+    grid-column: 2;
+  }
+
+  .game-options-button {
+    width: 100%;
+  }
+}

@@ -45,9 +45,21 @@
   },
   "game-options": {
     "choose-settings": "Izaberi opcije:",
+    "subtitle": "Odaberi regiju i trajanje partije, pa odmah kreni u novi izazov.",
+    "quick-start": "Brzi početak",
+    "loading": "Učitavanje dostupnih opcija igre...",
+    "region-hint": "Izaberi koliko širok geografski izazov želiš.",
+    "duration-hint": "Duža partija ti daje više prostora za niz tačnih odgovora.",
+    "selected-region": "Izabrana regija",
+    "selected-duration": "Trajanje partije",
     "timer-options": "Trajanje partije:",
     "seconds": "sekundi",
     "start-game": "Započni igru"
+  },
+  "game-play": {
+    "live-challenge": "Izazov je u toku",
+    "round-length": "Trajanje partije",
+    "region": "Regija"
   },
   "regions": {
     "world": "Svijet",

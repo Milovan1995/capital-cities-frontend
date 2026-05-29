@@ -5,14 +5,29 @@
 ></app-game-options>
 <div *ngIf="gameOptionsPicked" class="container gameScreen">
   <ng-container *ngIf="gameSettings && !isGameFinished">
-    <div *ngIf="currentCapital">
-      <h3>{{ "current-score" | translate }} {{ score }}</h3>
-      <h3>
+    <div class="game-status-card">
+      <div class="game-status-copy">
+        <p class="game-status-label">{{ "game-play.live-challenge" | translate }}</p>
+        <h3>{{ "current-score" | translate }}: {{ score }}</h3>
+      </div>
+      <div class="game-status-metrics">
+        <div class="status-pill">
+          <span>{{ "current-score" | translate }}</span>
+          <strong>{{ score }}</strong>
+        </div>
+        <div class="status-pill">
+          <span>{{ "game-play.region" | translate }}</span>
+          <strong>{{ getRegionTranslationKey(gameSettings.region) | translate }}</strong>
+        </div>
+      </div>
+      <h3 class="game-timer">
         {{ "time-left" | translate }}
         <span [ngClass]="{ 'is-red': gameSettings.timer < 6 }">{{
           gameSettings.timer
         }}</span>
       </h3>
+    </div>
+    <div *ngIf="currentCapital" class="capital-stage">
       <app-capital
         [capital]="currentCapital"
         (answeredCorrectly)="handleAnswer($event)"
@@ -20,10 +35,14 @@
     </div>
   </ng-container>
   <ng-container *ngIf="gameSettings && isGameFinished">
-    <app-game-results [score]="score"></app-game-results>
-    <button (click)="onRestartGame()">{{ "play-again" | translate }}</button>
+    <div class="game-results-shell">
+      <app-game-results [score]="score"></app-game-results>
+      <button class="restart-button" (click)="onRestartGame()">
+        {{ "play-again" | translate }}
+      </button>
+    </div>
   </ng-container>
-  <h1 *ngIf="errorMessage">
+  <h1 *ngIf="errorMessage" class="game-error">
     {{ errorMessage }}
   </h1>
 </div>
