@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../components/models/user';
+import { UserProfile } from '../components/models/userProfile';
+import { UserStats } from '../components/models/userStats';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +21,21 @@ export class AuthService {
     return this.http.post(`${this.authUrl}/login`, user);
   }
 
+  getCurrentUser() {
+    return this.http.get<{ user: UserProfile }>(`${environment.API_URL}/user/me`, {
+      headers: this.getAuthHeaders(),
+    });
+  }
+
+  getCurrentUserStats() {
+    return this.http.get<{ stats: UserStats }>(
+      `${environment.API_URL}/user/me/stats`,
+      {
+        headers: this.getAuthHeaders(),
+      }
+    );
+  }
+
   isLoggedIn() {
     const token = localStorage.getItem('capitals-token');
     return !!token;
@@ -31,5 +48,12 @@ export class AuthService {
     const userDataPart = tokenParts[1];
     const user = JSON.parse(window.atob(userDataPart));
     return user;
+  }
+
+  private getAuthHeaders() {
+    const token = localStorage.getItem('capitals-token');
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
   }
 }

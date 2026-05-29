@@ -1,9 +1,25 @@
 <app-navbar></app-navbar>
 <div class="highscorePage">
   <h3>Highscores:</h3>
+  <label for="durationFilter">Duration</label>
+  <select
+    id="durationFilter"
+    [value]="selectedDuration"
+    (change)="onDurationChange($any($event.target).value)"
+  >
+    @for (duration of durations; track duration.id) {
+    <option [value]="duration.value">{{ duration.value }}s</option>
+    }
+  </select>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
   <ul>
     @for (highscore of highscores; track $index) {
-    <li>{{ highscore }}</li>
+    <li>
+      <strong>{{ highscore.username }}</strong>
+      <span> - {{ highscore.score }} pts</span>
+      <span> - {{ highscore.region }}</span>
+      <span> - {{ highscore.date_played | date }}</span>
+    </li>
     }
   </ul>
 </div>

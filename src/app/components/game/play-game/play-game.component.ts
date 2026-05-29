@@ -2,9 +2,11 @@ import { Component, OnDestroy } from '@angular/core';
 import { Link } from '../../models/link';
 import { CapitalService } from '../../../services/capital.service';
 import { Capital } from '../../models/capital';
-import { CapitalCacheService } from '../../../services/capital-cache.service';
 import { GameSettings } from '../../models/gameSettings';
 import { Subscription } from 'rxjs';
+import { HighscoresService } from '../../../services/highscores.service';
+import { AuthService } from '../../../services/auth.service';
+import { CapitalsResponse } from '../../models/capitalsResponse';
 
 @Component({
   selector: 'app-play-game',
@@ -18,120 +20,147 @@ export class PlayGameComponent implements OnDestroy {
   ];
 
   capitals: Capital[] = [];
-  currentCapital: Capital;
+  currentCapital?: Capital;
   score: number = 0;
   errorMessage?: string;
   gameOptionsPicked: boolean = false;
-  gameSettings: GameSettings;
-  regionId: number = undefined;
-  private capitalSubscription: Subscription;
+  isGameFinished: boolean = false;
+  gameSettings?: GameSettings;
+  private capitalSubscription?: Subscription;
+  private countdownIntervalId?: ReturnType<typeof setInterval>;
+  private hasSavedScore: boolean = false;
 
   constructor(
     private capitalService: CapitalService,
-    private capitalCacheService: CapitalCacheService
+    private highscoresService: HighscoresService,
+    private authService: AuthService
   ) {}
 
-  startGame(rId?: number) {
+  startGame(regionId?: number) {
     this.errorMessage = undefined;
-    this.startCountdown();
-    // TODO
-    // if (this.capitals.length < 1) {
-    //   this.loadCapitalsWithoutCache(rId);
-    //   return;
-    // }
-    if (this.gameSettings.region !== 'World') {
-      this.capitals = this.capitals.filter(
-        (element) => element.region == this.gameSettings.region
-      );
-    }
-    this.loadCurrentCapital();
+    this.isGameFinished = false;
+    this.capitalSubscription?.unsubscribe();
+    this.capitalSubscription = this.capitalService
+      .getAllCapitals(regionId)
+      .subscribe({
+        next: (capitalsResponse: CapitalsResponse) => {
+          this.capitals = [...capitalsResponse.capitals];
+        },
+        error: (error) => {
+          console.error('Error while loading capitals', error);
+          this.errorMessage = 'Unable to load capitals right now.';
+        },
+        complete: () => {
+          if (this.capitals.length === 0) {
+            this.errorMessage = 'No capitals available for this game mode.';
+            return;
+          }
+          this.startCountdown();
+          this.loadCurrentCapital();
+        },
+      });
   }
-  //pick a random element from the array, put it on the last spot, pop.
+
   loadCurrentCapital() {
-    let i = this.capitals.length - 1;
-    if (i > 0) {
-      const j: number = Math.floor(Math.random() * (i + 1));
-      [this.capitals[i], this.capitals[j]] = [
-        this.capitals[j],
-        this.capitals[i],
-      ];
+    if (this.capitals.length === 0) {
+      this.handleGameOver();
+      return;
     }
 
+    const i = this.capitals.length - 1;
+    const j: number = Math.floor(Math.random() * (i + 1));
+    [this.capitals[i], this.capitals[j]] = [this.capitals[j], this.capitals[i]];
     this.currentCapital = this.capitals.pop();
   }
 
   startCountdown() {
-    const intervalId = setInterval(() => {
-      if (this.gameSettings.timer <= 0 || this.capitals.length === 0) {
-        clearInterval(intervalId);
-        this.handleGameOver();
+    this.clearCountdown();
+    this.countdownIntervalId = setInterval(() => {
+      if (!this.gameSettings) {
+        this.clearCountdown();
+        return;
+      }
 
+      if (this.gameSettings.timer <= 0 || this.capitals.length === 0) {
+        this.clearCountdown();
+        this.handleGameOver();
         return;
       }
       this.gameSettings.timer--;
     }, 1000);
   }
-  handleGameOver() {}
+
+  handleGameOver() {
+    if (this.isGameFinished) {
+      return;
+    }
+
+    this.clearCountdown();
+    this.isGameFinished = true;
+    this.currentCapital = undefined;
+
+    const userData = this.authService.getUserData();
+    if (
+      !userData ||
+      this.hasSavedScore ||
+      !this.gameSettings?.durationId ||
+      !this.gameSettings.regionId
+    ) {
+      return;
+    }
+
+    this.hasSavedScore = true;
+    this.highscoresService
+      .saveGameScore(
+        this.score,
+        this.gameSettings.durationId,
+        this.gameSettings.regionId,
+        userData.userId
+      )
+      .subscribe({
+        error: (error) => {
+          console.error('Error while saving game score', error);
+          this.errorMessage = 'Your score could not be saved.';
+        },
+      });
+  }
 
   handleAnswer(isCorrect: boolean) {
     isCorrect && this.score++;
     this.loadCurrentCapital();
   }
 
-  // Todo
-  // loadCapitalsWithoutCache(regionID?: number) {
-  //   this.capitalSubscription = this.capitalService
-  //     .getAllCapitals(regionID)
-  //     .subscribe({
-  //       next: (capitalsResponse: CapitalsResponse) => {
-  //         this.capitals = [...capitalsResponse.capitals];
-  //         if (!regionID) {
-  //           this.capitalCacheService.setCapitalsInCache([...this.capitals]);
-  //         }
-  //       },
-  //       error: (error) => {
-  //         console.error('Error while loading capitals', error);
-  //         this.errorMessage = 'Apologies,maintenence';
-  //       },
-  //       complete: () => {
-  //         this.loadCurrentCapital();
-  //       },
-  //     });
-  // }
-
-  // TODO
-  // onOptionsSelected(options: GameSettings) {
-  //   const capitalsCache = this.capitalCacheService.getCapitals();
-  //   this.capitals = Array.isArray(capitalsCache) ? [...capitalsCache] : [];
-  //   this.gameSettings = options;
-  //   this.gameOptionsPicked = true;
-  //   if (this.gameSettings.region !== 'World') {
-  //     this.regionId = this.getRegionId(this.gameSettings.region);
-  //     return this.startGame(this.regionId);
-  //   }
-  //   this.startGame();
-  // }
-  onRestartGame() {
-    this.gameOptionsPicked = false;
+  onOptionsSelected(options: GameSettings) {
     this.score = 0;
+    this.hasSavedScore = false;
+    this.capitals = [];
+    this.currentCapital = undefined;
+    this.gameSettings = { ...options };
+    this.gameOptionsPicked = true;
+    this.startGame(options.region === 'World' ? undefined : options.regionId);
   }
 
-  getRegionId(region: string) {
-    switch (region) {
-      case 'Europe':
-        return 1;
-      case 'Africa':
-        return 2;
-      case 'Asia':
-        return 3;
-      case 'Oceania':
-        return 4;
-      default:
-        return 5;
-    }
+  onRestartGame() {
+    this.clearCountdown();
+    this.gameOptionsPicked = false;
+    this.isGameFinished = false;
+    this.score = 0;
+    this.capitals = [];
+    this.currentCapital = undefined;
+    this.gameSettings = undefined;
+    this.errorMessage = undefined;
+    this.hasSavedScore = false;
   }
 
   ngOnDestroy(): void {
-    if (this.capitalSubscription) this.capitalSubscription.unsubscribe();
+    this.clearCountdown();
+    this.capitalSubscription?.unsubscribe();
+  }
+
+  private clearCountdown() {
+    if (this.countdownIntervalId) {
+      clearInterval(this.countdownIntervalId);
+      this.countdownIntervalId = undefined;
+    }
   }
 }

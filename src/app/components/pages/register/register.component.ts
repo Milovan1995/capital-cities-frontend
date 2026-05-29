@@ -30,7 +30,10 @@ export class RegisterComponent {
       alert(this._trans.instant('messages.enter-all-fields'));
       return;
     }
-    if (this.form.get('password') !== this.form.get('confirmPassword')) {
+    if (
+      this.form.get('password')?.value !==
+      this.form.get('confirmPassword')?.value
+    ) {
       alert(this._trans.instant('messages.passwords-dont-match'));
       return;
     }

@@ -1,12 +1,27 @@
 <app-navbar></app-navbar>
 <div class="container">
   <div class="userPage text-center">
-    <h2 *ngIf="!!username">Welcome, {{ username }}!</h2>
+    <h2 *ngIf="user">Welcome, {{ user.username }}!</h2>
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
     <div class="smallerContainer">
+      <div class="statsRow" *ngIf="stats">
+        <div class="statsCard">
+          <h4>Total Games</h4>
+          <p>{{ stats.total_games }}</p>
+        </div>
+        <div class="statsCard">
+          <h4>Best Score</h4>
+          <p>{{ stats.best_score }}</p>
+        </div>
+        <div class="statsCard">
+          <h4>Average Score</h4>
+          <p>{{ stats.average_score }}</p>
+        </div>
+      </div>
       <div class="userContainer">
         <app-achievements></app-achievements>
-        <app-user-games></app-user-games>
-        <app-user-highscores></app-user-highscores>
+        <app-user-games [stats]="stats"></app-user-games>
+        <app-user-highscores [stats]="stats"></app-user-highscores>
       </div>
     </div>
   </div>

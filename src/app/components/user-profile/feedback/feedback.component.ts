@@ -9,8 +9,8 @@ import { Link } from '../../models/link';
 export class FeedbackComponent {
   navbarLinks: Link[] = [
     new Link('Profile', '/pages/user'),
-    new Link('Highscores', '/pages/highscores'),
-    new Link('Feedback', '/pages/feedback'),
-    new Link('Play', '/pages/user/play'),
+    new Link('Highscores', '/capitals/highscores'),
+    new Link('Feedback', '/pages/user/feedback'),
+    new Link('Play', '/capitals/play-game'),
   ];
 }

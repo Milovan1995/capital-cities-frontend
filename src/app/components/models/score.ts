@@ -1,5 +1,7 @@
 export class Score {
-  duration_id: number;
-  game_id: number;
-  user_id: number;
+  score: number;
+  username: string;
+  region: string;
+  game_length_seconds: number;
+  date_played: string;
 }

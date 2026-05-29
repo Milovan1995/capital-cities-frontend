@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CapitalsResponse } from '../components/models/capitalsResponse';
 import { throwError, Observable, catchError } from 'rxjs';
 import { environment } from '../../environments/environment.development';
+import { GameConfigResponse } from '../components/models/gameConfigResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,12 @@ export class CapitalService {
       .get<CapitalsResponse>(
         `${environment.API_URL}/game/capitals/${regionId ?? ''}`
       )
+      .pipe(catchError(this.handleError));
+  }
+
+  getGameConfig() {
+    return this.http
+      .get<GameConfigResponse>(`${environment.API_URL}/game/config`)
       .pipe(catchError(this.handleError));
   }
 }

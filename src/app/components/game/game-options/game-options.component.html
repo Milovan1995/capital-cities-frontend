@@ -1,10 +1,12 @@
 <div class="container mt-5" [formGroup]="form">
   <h3>{{ "game-options.choose-settings" | translate }}</h3>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
   <div class="form-group">
     <label for="regionSelect">{{ "region" | translate }}</label>
     <select class="form-control" formControlName="region" id="regionSelect">
-      @for(region of regions;track region.value){
-      <option [value]="region.value">{{ region.name | translate }}</option>
+      <option value="World">World</option>
+      @for(region of regions;track region.id){
+      <option [value]="region.name">{{ region.name }}</option>
       }
     </select>
   </div>
@@ -12,17 +14,17 @@
   <div class="form-group">
     <label>{{ "game-options.timer-options" | translate }}:</label>
 
-    @for(timer of timers;track timer){
+    @for(duration of durations;track duration.id){
     <div class="form-check">
       <input
         class="form-check-input"
         type="radio"
-        [id]="'timer' + timer"
-        [value]="timer"
-        formControlName="timer"
+        [id]="'timer' + duration.id"
+        [value]="duration.id"
+        formControlName="durationId"
       />
-      <label class="form-check-label" [for]="'timer' + timer">
-        {{ timer }} {{ "game-options.seconds" | translate }}
+      <label class="form-check-label" [for]="'timer' + duration.id">
+        {{ duration.value }} {{ "game-options.seconds" | translate }}
       </label>
     </div>
     }

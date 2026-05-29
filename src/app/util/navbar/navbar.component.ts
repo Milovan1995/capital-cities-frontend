@@ -32,9 +32,9 @@ export class NavbarComponent implements OnInit {
       : (this.navbarLinks = [
           ...this.navbarLinks,
           new Link('profile', '/pages/user'),
-          new Link('highscores', '/pages/highscores'),
-          new Link('feedback', '/pages/feedback'),
-          new Link('play', '/pages/user/play'),
+          new Link('highscores', '/capitals/highscores'),
+          new Link('feedback', '/pages/user/feedback'),
+          new Link('play', '/capitals/play-game'),
         ]);
   }
 
@@ -52,7 +52,6 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
     this.navbarLinks = [
       new Link('about', '/about'),
-      ,
       new Link('explore', '/capitals'),
     ];
     this.ngOnInit();

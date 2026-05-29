@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserStats } from '../../models/userStats';
 
 @Component({
   selector: 'app-user-games',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './user-games.component.css',
 })
 export class UserGamesComponent {
-  games: string[] = ['Game1'];
+  @Input() stats?: UserStats;
 }

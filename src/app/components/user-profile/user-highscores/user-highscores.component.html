@@ -1,6 +1,3 @@
 <h3>Personal Highscores:</h3>
-<ul>
-  @for (score of scores; track $index) {
-  <li>{{ score }}</li>
-  }
-</ul>
+<p>Best score: {{ stats?.best_score ?? 0 }}</p>
+<p>Average score: {{ stats?.average_score ?? 0 }}</p>

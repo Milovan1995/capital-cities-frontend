@@ -15,9 +15,10 @@ export class CapitalComponent {
     answer: new FormControl(''),
   });
   onUserAnswer() {
+    const answer = (this.form.get('answer')?.value ?? '').toString().trim();
     this.answeredCorrectly.emit(
-      this.form.get('answer').value.toUpperCase() ===
-        this.capital.capital.toUpperCase()
+      answer.toUpperCase() === this.capital.capital.toUpperCase()
     );
+    this.form.reset();
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserStats } from '../../models/userStats';
 
 @Component({
   selector: 'app-user-highscores',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './user-highscores.component.css',
 })
 export class UserHighscoresComponent {
-  scores: number[] = [12,15,21];
+  @Input() stats?: UserStats;
 }
