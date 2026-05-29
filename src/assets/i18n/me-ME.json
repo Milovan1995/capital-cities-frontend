@@ -30,6 +30,12 @@
   "play-now": "Igraj sada",
   "login": "Prijavi se",
   "logout": "Odjavi se",
+  "themes": {
+    "label": "Tema",
+    "aurora": "Aurora",
+    "sunset": "Zalazak",
+    "midnight": "Ponoć"
+  },
   "num": "Br",
   "country": "Država",
   "capital": "Grad",

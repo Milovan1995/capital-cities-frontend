@@ -30,6 +30,12 @@
   "play-now": "Play now",
   "login": "Login",
   "logout": "Logout",
+  "themes": {
+    "label": "Theme",
+    "aurora": "Aurora",
+    "sunset": "Sunset",
+    "midnight": "Midnight"
+  },
   "num": "No",
   "country": "Country",
   "capital": "Capital",

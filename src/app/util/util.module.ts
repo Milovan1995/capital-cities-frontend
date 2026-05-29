@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
@@ -8,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, ButtonComponent],
-  imports: [CommonModule, RouterModule, TranslateModule],
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
   exports: [NavbarComponent, FooterComponent, ButtonComponent],
 })
 export class UtilModule {}

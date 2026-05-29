@@ -3,6 +3,7 @@ import { Link } from '../../components/models/link';
 import { AuthService } from '../../services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageOptions } from '../languages';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,11 +15,13 @@ export class NavbarComponent implements OnInit {
     new Link('about', '/about'),
     new Link('explore', '/capitals'),
   ];
+  readonly themeOptions = this.themeService.themeOptions;
   language: LanguageOptions;
   isLoggedIn: boolean;
   constructor(
     private authService: AuthService,
-    private _trans: TranslateService
+    private _trans: TranslateService,
+    public themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
@@ -48,8 +51,12 @@ export class NavbarComponent implements OnInit {
     this.language = language;
   }
 
+  switchTheme(theme: string) {
+    this.themeService.setTheme(theme);
+  }
+
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('capitals-token');
     this.navbarLinks = [
       new Link('about', '/about'),
       new Link('explore', '/capitals'),

@@ -3,8 +3,8 @@
 }
 
 .game-options-panel {
-  background: rgba(254, 254, 254, 0.88);
-  border: 1px solid rgba(25, 4, 130, 0.12);
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
   border-radius: 24px;
   padding: 2.5rem;
 }
@@ -28,13 +28,13 @@
 .game-options-loading,
 .game-options-error,
 .summary-stat span {
-  color: rgba(25, 4, 130, 0.72);
+  color: var(--subtleTextColor);
 }
 
 .game-options-error {
-  background: rgba(196, 42, 42, 0.1);
+  background: var(--errorSurface);
   border-radius: 14px;
-  color: #8f2020;
+  color: var(--errorText);
   margin-top: 1.25rem;
   padding: 1rem 1.25rem;
 }
@@ -51,7 +51,11 @@
 }
 
 .game-options-card {
-  background: linear-gradient(180deg, rgba(213, 227, 227, 0.45), rgba(255, 255, 255, 0.92));
+  background: linear-gradient(
+    180deg,
+    var(--surface-muted),
+    var(--surface-elevated)
+  );
   border-radius: 22px;
   padding: 1.5rem;
 }
@@ -69,7 +73,7 @@
 
 .duration-option {
   align-items: center;
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--surface-elevated);
   border: 1px solid transparent;
   border-radius: 16px;
   cursor: pointer;
@@ -81,7 +85,7 @@
 }
 
 .duration-option:hover {
-  border-color: rgba(25, 4, 130, 0.2);
+  border-color: var(--surface-border-strong);
 }
 
 .duration-value {
@@ -90,7 +94,7 @@
 }
 
 .duration-unit {
-  color: rgba(25, 4, 130, 0.7);
+  color: var(--subtleTextColor);
 }
 
 .game-options-summary {
@@ -101,14 +105,14 @@
 }
 
 .summary-stat {
-  background: #190482;
+  background: var(--stat-surface);
   border-radius: 16px;
-  color: #fefefe;
+  color: var(--stat-text);
   padding: 1rem 1.25rem;
 }
 
 .summary-stat span {
-  color: rgba(254, 254, 254, 0.72);
+  color: var(--inverseSubtleTextColor);
 }
 
 .summary-stat strong {

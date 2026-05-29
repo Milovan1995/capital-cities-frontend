@@ -1,6 +1,7 @@
 .container {
-  width: 25%;
+  max-width: 32rem;
   padding: 3rem;
+  width: 100%;
 }
 
 div.container div.formsText label {
@@ -28,4 +29,10 @@ div.container div.formsText span a:hover {
 .registerBtn:hover {
   background-color: var(--textColor);
   color: var(--bgColor);
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 1.5rem;
+  }
 }

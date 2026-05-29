@@ -9,10 +9,10 @@
 
 .game-status-card,
 .game-results-shell {
-  background: rgba(254, 254, 254, 0.9);
-  border: 1px solid rgba(25, 4, 130, 0.12);
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-border);
   border-radius: 24px;
-  box-shadow: 0 18px 40px rgba(25, 4, 130, 0.1);
+  box-shadow: var(--control-shadow);
   max-width: 920px;
   padding: 1.75rem 2rem;
   width: 100%;
@@ -40,13 +40,17 @@
 }
 
 .status-pill {
-  background: linear-gradient(135deg, rgba(213, 227, 227, 0.65), rgba(255, 255, 255, 0.95));
+  background: linear-gradient(
+    135deg,
+    var(--surface-muted),
+    var(--surface-elevated)
+  );
   border-radius: 999px;
   padding: 0.9rem 1.2rem;
 }
 
 .status-pill span {
-  color: rgba(25, 4, 130, 0.7);
+  color: var(--subtleTextColor);
   display: block;
   font-size: 1.2rem;
 }
@@ -60,19 +64,19 @@
 }
 
 .restart-button {
-  background: #190482;
+  background: var(--stat-surface);
   border: none;
   border-radius: 999px;
-  color: #fefefe;
+  color: var(--stat-text);
   font-size: 1.8rem;
   margin-top: 1.5rem;
   padding: 0.9rem 2rem;
 }
 
 .game-error {
-  background: rgba(196, 42, 42, 0.1);
+  background: var(--errorSurface);
   border-radius: 18px;
-  color: #8f2020;
+  color: var(--errorText);
   max-width: 920px;
   padding: 1.2rem 1.5rem;
   text-align: center;
@@ -80,7 +84,7 @@
 }
 
 .is-red {
-  color: red;
+  color: var(--urgentText);
 }
 
 @media (max-width: 767px) {
