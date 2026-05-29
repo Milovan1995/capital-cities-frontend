@@ -2,6 +2,19 @@
   margin-bottom: 3rem;
 }
 
+.container .table {
+  color: var(--textColor);
+}
+
+.container .table > thead > tr > th {
+  border-bottom-color: var(--surface-border-strong);
+  color: var(--secondTextColor);
+}
+
+.container .table > tbody > tr > td {
+  border-top-color: var(--surface-border);
+}
+
 input {
   margin-bottom: 3rem;
   width: 40%;
@@ -10,4 +23,16 @@ input {
   padding: 0.5rem 2rem;
   font-size: 1.5rem;
   font-family: "Audiowide", sans-serif;
+}
+
+:host-context([data-theme="midnight"]) .container .table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: var(--surface-elevated);
+}
+
+:host-context([data-theme="midnight"]) .container .table-striped > tbody > tr:nth-of-type(even) {
+  background-color: rgba(16, 20, 29, 0.72);
+}
+
+:host-context([data-theme="midnight"]) .container .table-striped > tbody > tr:hover {
+  background-color: var(--interactive-hover);
 }
