@@ -26,9 +26,11 @@ export class PlayGameComponent implements OnDestroy {
   gameOptionsPicked: boolean = false;
   isGameFinished: boolean = false;
   gameSettings?: GameSettings;
+  isGameLoading = false;
+  scoreSaveState: 'not-started' | 'pending' | 'saved' | 'failed' = 'not-started';
   private capitalSubscription?: Subscription;
   private countdownIntervalId?: ReturnType<typeof setInterval>;
-  private hasSavedScore: boolean = false;
+  private gameRunId = 0;
 
   constructor(
     private capitalService: CapitalService,
@@ -37,20 +39,29 @@ export class PlayGameComponent implements OnDestroy {
   ) {}
 
   startGame(regionId?: number) {
+    const runId = ++this.gameRunId;
     this.errorMessage = undefined;
     this.isGameFinished = false;
+    this.isGameLoading = true;
+    this.currentCapital = undefined;
+    this.clearCountdown();
     this.capitalSubscription?.unsubscribe();
     this.capitalSubscription = this.capitalService
       .getAllCapitals(regionId)
       .subscribe({
         next: (capitalsResponse: CapitalsResponse) => {
+          if (runId !== this.gameRunId) return;
           this.capitals = [...capitalsResponse.capitals];
         },
         error: (error) => {
+          if (runId !== this.gameRunId) return;
           console.error('Error while loading capitals', error);
+          this.isGameLoading = false;
           this.errorMessage = 'Unable to load capitals right now.';
         },
         complete: () => {
+          if (runId !== this.gameRunId) return;
+          this.isGameLoading = false;
           if (this.capitals.length === 0) {
             this.errorMessage = 'No capitals available for this game mode.';
             return;
@@ -62,6 +73,10 @@ export class PlayGameComponent implements OnDestroy {
   }
 
   loadCurrentCapital() {
+    if (this.isGameFinished || this.isGameLoading) {
+      return;
+    }
+
     if (this.capitals.length === 0) {
       this.handleGameOver();
       return;
@@ -75,7 +90,12 @@ export class PlayGameComponent implements OnDestroy {
 
   startCountdown() {
     this.clearCountdown();
+    const runId = this.gameRunId;
     this.countdownIntervalId = setInterval(() => {
+      if (runId !== this.gameRunId) {
+        this.clearCountdown();
+        return;
+      }
       if (!this.gameSettings) {
         this.clearCountdown();
         return;
@@ -96,43 +116,66 @@ export class PlayGameComponent implements OnDestroy {
     }
 
     this.clearCountdown();
+    this.isGameLoading = false;
     this.isGameFinished = true;
     this.currentCapital = undefined;
 
     const userData = this.authService.getUserData();
     if (
       !userData ||
-      this.hasSavedScore ||
-      !this.gameSettings?.durationId ||
-      !this.gameSettings.regionId
+      this.scoreSaveState === 'pending' ||
+      this.scoreSaveState === 'saved' ||
+      this.gameSettings?.durationId == null
     ) {
       return;
     }
 
-    this.hasSavedScore = true;
+    this.saveScore();
+  }
+
+  private saveScore() {
+    if (!this.gameSettings?.durationId) return;
+
+    this.scoreSaveState = 'pending';
+    const runId = this.gameRunId;
     this.highscoresService
       .saveGameScore(
         this.score,
         this.gameSettings.durationId,
-        this.gameSettings.regionId,
-        userData.userId
+        this.gameSettings.regionId
       )
       .subscribe({
+        next: () => {
+          if (runId === this.gameRunId) this.scoreSaveState = 'saved';
+        },
         error: (error) => {
+          if (runId !== this.gameRunId) return;
           console.error('Error while saving game score', error);
+          this.scoreSaveState = 'failed';
           this.errorMessage = 'Your score could not be saved.';
         },
       });
   }
 
   handleAnswer(isCorrect: boolean) {
+    if (this.isGameFinished || this.isGameLoading || !this.currentCapital) {
+      return;
+    }
     isCorrect && this.score++;
     this.loadCurrentCapital();
   }
 
+  retrySaveScore() {
+    if (!this.isGameFinished || this.scoreSaveState !== 'failed') return;
+    this.scoreSaveState = 'not-started';
+    this.errorMessage = undefined;
+    const userData = this.authService.getUserData();
+    if (userData) this.saveScore();
+  }
+
   onOptionsSelected(options: GameSettings) {
     this.score = 0;
-    this.hasSavedScore = false;
+    this.scoreSaveState = 'not-started';
     this.capitals = [];
     this.currentCapital = undefined;
     this.gameSettings = { ...options };
@@ -141,7 +184,9 @@ export class PlayGameComponent implements OnDestroy {
   }
 
   onRestartGame() {
+    ++this.gameRunId;
     this.clearCountdown();
+    this.capitalSubscription?.unsubscribe();
     this.gameOptionsPicked = false;
     this.isGameFinished = false;
     this.score = 0;
@@ -149,10 +194,12 @@ export class PlayGameComponent implements OnDestroy {
     this.currentCapital = undefined;
     this.gameSettings = undefined;
     this.errorMessage = undefined;
-    this.hasSavedScore = false;
+    this.scoreSaveState = 'not-started';
+    this.isGameLoading = false;
   }
 
   ngOnDestroy(): void {
+    ++this.gameRunId;
     this.clearCountdown();
     this.capitalSubscription?.unsubscribe();
   }

@@ -6,25 +6,28 @@ import { PlayGameComponent } from './play-game.component';
 import { CapitalService } from '../../../services/capital.service';
 import { HighscoresService } from '../../../services/highscores.service';
 import { AuthService } from '../../../services/auth.service';
+import { Capital } from '../../models/capital';
 
 describe('PlayGameComponent', () => {
   let component: PlayGameComponent;
   let fixture: ComponentFixture<PlayGameComponent>;
+  let highscoresServiceSpy: jasmine.SpyObj<HighscoresService>;
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
 
   beforeEach(async () => {
     const capitalServiceSpy = jasmine.createSpyObj('CapitalService', [
       'getAllCapitals',
     ]);
-    const highscoresServiceSpy = jasmine.createSpyObj('HighscoresService', [
+    highscoresServiceSpy = jasmine.createSpyObj('HighscoresService', [
       'saveGameScore',
     ]);
-    const authServiceSpy = jasmine.createSpyObj('AuthService', [
+    authServiceSpy = jasmine.createSpyObj('AuthService', [
       'getUserData',
       'isLoggedIn',
     ]);
 
     capitalServiceSpy.getAllCapitals.and.returnValue(of({ capitals: [] }));
-    highscoresServiceSpy.saveGameScore.and.returnValue(of({}));
+    highscoresServiceSpy.saveGameScore.and.returnValue(of('saved'));
     authServiceSpy.getUserData.and.returnValue(null);
     authServiceSpy.isLoggedIn.and.returnValue(false);
 
@@ -53,5 +56,47 @@ describe('PlayGameComponent', () => {
       'regions.north-and-south-america'
     );
     expect(component.getRegionTranslationKey('Custom')).toBe('Custom');
+  });
+
+  it('saves an authenticated World game without a region id', () => {
+    authServiceSpy.getUserData.and.returnValue({ userId: 7 });
+    component.gameSettings = {
+      region: 'World',
+      durationId: 30,
+      timer: 0,
+    };
+
+    component.handleGameOver();
+
+    expect(highscoresServiceSpy.saveGameScore).toHaveBeenCalledOnceWith(
+      0,
+      30,
+      undefined
+    );
+    expect(component.scoreSaveState).toBe('saved');
+  });
+
+  it('only finalizes and saves a game once', () => {
+    authServiceSpy.getUserData.and.returnValue({ userId: 7 });
+    component.gameSettings = {
+      region: 'Europe',
+      regionId: 1,
+      durationId: 30,
+      timer: 0,
+    };
+
+    component.handleGameOver();
+    component.handleGameOver();
+
+    expect(highscoresServiceSpy.saveGameScore).toHaveBeenCalledTimes(1);
+  });
+
+  it('ignores answers after the game has finished', () => {
+    component.isGameFinished = true;
+    component.currentCapital = new Capital(1, 'France', 'Paris', 'Europe');
+
+    component.handleAnswer(true);
+
+    expect(component.score).toBe(0);
   });
 });

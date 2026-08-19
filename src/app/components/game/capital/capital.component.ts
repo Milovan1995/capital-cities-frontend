@@ -16,6 +16,7 @@ export class CapitalComponent {
   });
   onUserAnswer() {
     const answer = (this.form.get('answer')?.value ?? '').toString().trim();
+    if (!answer) return;
     this.answeredCorrectly.emit(
       answer.toUpperCase() === this.capital.capital.toUpperCase()
     );

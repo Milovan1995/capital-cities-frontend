@@ -56,7 +56,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('capitals-token');
+    this.authService.logout();
     this.navbarLinks = [
       new Link('about', '/about'),
       new Link('explore', '/capitals'),

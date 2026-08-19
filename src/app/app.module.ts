@@ -12,12 +12,14 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UtilModule } from './util/util.module';
 import { HeroComponentComponent } from './components/app/hero-component/hero-component.component';
 import { HomeComponent } from './components/app/home/home.component';
 import { AboutComponent } from './components/app/about/about.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AuthInterceptor } from './services/auth.interceptor';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -45,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     provideClientHydration(),
     provideHttpClient(withFetch()),
     provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 })
 export class AppModule {}
