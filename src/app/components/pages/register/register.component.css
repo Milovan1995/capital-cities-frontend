@@ -4,6 +4,23 @@
   width: 100%;
 }
 
+.auth-card {
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-border);
+  border-radius: 22px;
+  box-shadow: var(--control-shadow);
+  padding: 2rem;
+}
+
+.auth-error {
+  background: var(--errorSurface);
+  border-radius: 12px;
+  color: var(--errorText);
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", sans-serif;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+}
+
 div.container div.formsText label {
   font-weight: 300;
 }

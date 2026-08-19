@@ -1,25 +1,40 @@
 <app-navbar></app-navbar>
-<div class="highscorePage">
-  <h3>Highscores:</h3>
-  <label for="durationFilter">Duration</label>
+<main class="highscorePage container">
+  <div class="highscore-header">
+    <p class="page-eyebrow">{{ "highscores-page.eyebrow" | translate }}</p>
+    <h1>{{ "highscores-page.title" | translate }}</h1>
+    <p>{{ "highscores-page.subtitle" | translate }}</p>
+  </div>
+  <label for="durationFilter">{{ "highscores-page.duration" | translate }}</label>
   <select
+    class="duration-filter"
     id="durationFilter"
     [value]="selectedDuration"
     (change)="onDurationChange($any($event.target).value)"
   >
     @for (duration of durations; track duration.id) {
-    <option [value]="duration.value">{{ duration.value }}s</option>
+    <option [value]="duration.value">
+      {{ duration.value }} {{ "game-options.seconds" | translate }}
+    </option>
     }
   </select>
-  <p *ngIf="errorMessage">{{ errorMessage }}</p>
-  <ul>
+  <p *ngIf="isLoading" class="highscore-state" role="status">
+    {{ "highscores-page.loading" | translate }}
+  </p>
+  <p *ngIf="errorMessage" class="highscore-state highscore-state--error" role="alert">
+    {{ errorMessage }}
+  </p>
+  <p *ngIf="!isLoading && !errorMessage && highscores.length === 0" class="highscore-state">
+    {{ "highscores-page.empty" | translate }}
+  </p>
+  <ol *ngIf="!isLoading && !errorMessage && highscores.length > 0" class="highscore-list">
     @for (highscore of highscores; track $index) {
     <li>
-      <strong>{{ highscore.username }}</strong>
-      <span> - {{ highscore.score }} pts</span>
-      <span> - {{ highscore.region }}</span>
-      <span> - {{ highscore.date_played | date }}</span>
+      <span class="rank">{{ $index + 1 }}</span>
+      <span class="player"><strong>{{ highscore.username }}</strong><small>{{ highscore.region }}</small></span>
+      <strong class="points">{{ highscore.score }} {{ "highscores-page.points" | translate }}</strong>
+      <time>{{ highscore.date_played | date }}</time>
     </li>
     }
-  </ul>
-</div>
+  </ol>
+</main>

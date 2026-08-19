@@ -1,20 +1,25 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="userPage text-center">
-    <h2 *ngIf="user">Welcome, {{ user.username }}!</h2>
-    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+<main class="container userPage">
+  <div class="profile-header">
+    <p class="page-eyebrow">{{ "profile-page.eyebrow" | translate }}</p>
+    <h1 *ngIf="user">{{ "profile-page.welcome" | translate }}, {{ user.username }}!</h1>
+    <p *ngIf="!user && !errorMessage" class="profile-state" role="status">
+      {{ "profile-page.loading" | translate }}
+    </p>
+    <p *ngIf="errorMessage" class="profile-state profile-state--error" role="alert">{{ errorMessage }}</p>
+  </div>
     <div class="smallerContainer">
       <div class="statsRow" *ngIf="stats">
         <div class="statsCard">
-          <h4>Total Games</h4>
+          <h4>{{ "profile-page.total-games" | translate }}</h4>
           <p>{{ stats.total_games }}</p>
         </div>
         <div class="statsCard">
-          <h4>Best Score</h4>
+          <h4>{{ "profile-page.best-score" | translate }}</h4>
           <p>{{ stats.best_score }}</p>
         </div>
         <div class="statsCard">
-          <h4>Average Score</h4>
+          <h4>{{ "profile-page.average-score" | translate }}</h4>
           <p>{{ stats.average_score }}</p>
         </div>
       </div>
@@ -24,5 +29,4 @@
         <app-user-highscores [stats]="stats"></app-user-highscores>
       </div>
     </div>
-  </div>
-</div>
+</main>

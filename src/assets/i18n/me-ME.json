@@ -44,7 +44,8 @@
     "enter-both-fields": "Unesi vrijednosti u oba polja!",
     "enter-all-fields": "Unesi vrijednost za sva polja!",
     "passwords-dont-match": "Lozinke se ne poklapaju",
-    "something-wrong": "Došlo je do greške."
+    "something-wrong": "Došlo je do greške.",
+    "login-failed": "Prijava nije uspjela. Provjeri podatke i pokušaj ponovo."
   },
   "sentences": {
     "guess-the-capital": "Pogodi glavni grad"
@@ -65,7 +66,55 @@
   "game-play": {
     "live-challenge": "Izazov je u toku",
     "round-length": "Trajanje partije",
-    "region": "Regija"
+    "region": "Regija",
+    "question": "Tvoje pitanje",
+    "answer-hint": "Upiši glavni grad i pošalji odgovor.",
+    "answer-placeholder": "Unesi glavni grad",
+    "submit-answer": "Pošalji odgovor",
+    "skip-hint": "Pritisni Enter sa praznim odgovorom za preskakanje.",
+    "progress": "Pitanje",
+    "loading": "Učitavanje sljedećeg izazova..."
+  },
+  "game-results": {
+    "complete": "Partija završena",
+    "title": "Kraj igre",
+    "score": "Tvoj rezultat",
+    "saved": "Rezultat je sačuvan na profilu.",
+    "saving": "Čuvanje rezultata...",
+    "save-failed": "Rezultat nije moguće sačuvati.",
+    "retry": "Pokušaj ponovo"
+  },
+  "highscores-page": {
+    "eyebrow": "Globalna tabela",
+    "title": "Najbolji rezultati",
+    "subtitle": "Pogledaj rezultate igrača za svako trajanje partije.",
+    "duration": "Trajanje partije",
+    "loading": "Učitavanje rezultata...",
+    "empty": "Za ovu partiju još nema rezultata.",
+    "points": "poena"
+  },
+  "explore-page": {
+    "eyebrow": "Atlas svijeta",
+    "title": "Istraži glavne gradove",
+    "subtitle": "Pretraži države i glavne gradove koji se pojavljuju u kvizu.",
+    "loading": "Učitavanje gradova...",
+    "empty": "Nijedan glavni grad ne odgovara pretrazi."
+  },
+  "language": {
+    "english": "Engleski",
+    "montenegrin": "Crnogorski"
+  },
+  "profile-page": {
+    "eyebrow": "Tvoj napredak",
+    "welcome": "Dobrodošao",
+    "loading": "Učitavanje profila...",
+    "total-games": "Ukupno partija",
+    "best-score": "Najbolji rezultat",
+    "average-score": "Prosječan rezultat",
+    "history": "Istorija partija",
+    "last-played": "Posljednja partija",
+    "no-games": "Još nema partija",
+    "personal-highscores": "Lični najbolji rezultati"
   },
   "regions": {
     "world": "Svijet",

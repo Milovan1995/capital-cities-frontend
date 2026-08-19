@@ -15,6 +15,7 @@ export class HighscoresComponent implements OnInit {
   durations: Duration[] = [];
   selectedDuration?: number;
   errorMessage?: string;
+  isLoading = true;
   navbarLinks: Link[] = [
     new Link('Profile', '/pages/user'),
     new Link('Highscores', '/capitals/highscores'),
@@ -34,11 +35,14 @@ export class HighscoresComponent implements OnInit {
         this.selectedDuration = durations[0]?.value;
         if (this.selectedDuration) {
           this.loadHighscores(this.selectedDuration);
+        } else {
+          this.isLoading = false;
         }
       },
       error: (error) => {
         console.error('Error while loading durations', error);
         this.errorMessage = 'Unable to load highscores.';
+        this.isLoading = false;
       },
     });
   }
@@ -50,13 +54,17 @@ export class HighscoresComponent implements OnInit {
   }
 
   private loadHighscores(duration: number) {
+    this.isLoading = true;
+    this.errorMessage = undefined;
     this.highscoresService.getAllHighscores(duration, 10).subscribe({
       next: (highscores) => {
         this.highscores = highscores;
+        this.isLoading = false;
       },
       error: (error) => {
         console.error('Error while loading highscores', error);
         this.errorMessage = 'Unable to load highscores.';
+        this.isLoading = false;
       },
     });
   }

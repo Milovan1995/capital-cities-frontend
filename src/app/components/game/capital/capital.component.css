@@ -1,11 +1,76 @@
 .gameComponent {
+  background: var(--surface-elevated);
+  border: 1px solid var(--surface-border);
+  border-radius: 24px;
+  box-shadow: var(--control-shadow);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 25rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
 }
-.gameComponent div {
+
+.question-eyebrow {
+  color: var(--secondTextColor);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.gameComponent h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  margin: 0.5rem 0;
+}
+
+.answer-hint,
+.skip-hint {
+  color: var(--subtleTextColor);
+  font-family: "Gill Sans", "Gill Sans MT", "Calibri", sans-serif;
+}
+
+.answer-form {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.answer-form input {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border-strong);
+  border-radius: 999px;
+  font-size: 1.7rem;
+  max-width: 34rem;
+  padding: 0.85rem 1.25rem;
+  width: 100%;
+}
+
+.answer-submit {
+  border: none;
+  border-radius: 999px;
+  font-size: 1.6rem;
+  padding: 0.9rem 1.5rem;
+}
+
+.skip-hint {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .gameComponent {
+    min-height: 22rem;
+    padding: 2rem 1rem;
+  }
+
+  .answer-submit {
+    width: 100%;
+  }
 }

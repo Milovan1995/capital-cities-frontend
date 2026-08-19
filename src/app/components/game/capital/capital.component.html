@@ -1,12 +1,18 @@
 <div class="container gameComponent">
-  <h1>{{ "sentences.guess-the-capital" | translate }}</h1>
-  <h3>{{ capital.country }}</h3>
-  <div [formGroup]="form">
+  <p class="question-eyebrow">{{ "game-play.question" | translate }}</p>
+  <h1>{{ capital.country }}</h1>
+  <p class="answer-hint">{{ "game-play.answer-hint" | translate }}</p>
+  <form [formGroup]="form" (ngSubmit)="onUserAnswer()" class="answer-form">
     <input
       type="text"
       formControlName="answer"
-      placeholder="Enter capital"
-      (keyup.enter)="onUserAnswer()"
+      [placeholder]="'game-play.answer-placeholder' | translate"
+      [attr.aria-label]="'game-play.answer-placeholder' | translate"
+      autocomplete="off"
     />
-  </div>
+    <button type="submit" class="btn btn-primary answer-submit">
+      {{ "game-play.submit-answer" | translate }}
+    </button>
+  </form>
+  <p class="skip-hint">{{ "game-play.skip-hint" | translate }}</p>
 </div>

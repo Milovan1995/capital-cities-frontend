@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="formsText" [formGroup]="form">
+  <form class="formsText auth-card" [formGroup]="form" (ngSubmit)="register()">
     <div class="form-floating">
       <label for="floatingInput">{{
         "login-component.username" | translate
@@ -10,6 +10,7 @@
         class="form-control"
         id="floatingInput"
         formControlName="username"
+        autocomplete="username"
       />
     </div>
     <label for="floatingPassword">{{
@@ -21,6 +22,7 @@
         class="form-control"
         id="floatingPassword"
         formControlName="password"
+        autocomplete="new-password"
       />
     </div>
     <label for="floatingConfirmPassword">{{
@@ -32,16 +34,18 @@
         class="form-control"
         id="floatingConfirmPassword"
         formControlName="confirmPassword"
+        autocomplete="new-password"
       />
     </div>
+    <p *ngIf="errorMessage" class="auth-error" role="alert">{{ errorMessage }}</p>
     <span
       >{{ "login-component.already-have-login" | translate }}
       <a routerLink="/pages/login">{{
         "login-component.login" | translate
       }}</a></span
     >
-    <button class="btn registerBtn" (click)="register()">
+    <button class="btn registerBtn" type="submit" [disabled]="isSubmitting">
       {{ "login-component.register-now" | translate }}
     </button>
-  </div>
+  </form>
 </div>

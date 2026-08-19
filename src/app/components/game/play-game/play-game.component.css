@@ -32,6 +32,29 @@
   margin: 0.4rem 0 0;
 }
 
+.game-progress {
+  border-top: 1px solid var(--surface-border);
+  color: var(--subtleTextColor);
+  font-size: 1.2rem;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+}
+
+.game-progress strong {
+  color: var(--textColor);
+  margin-left: 0.4rem;
+}
+
+.game-loading {
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  color: var(--subtleTextColor);
+  padding: 1rem 1.25rem;
+  text-align: center;
+  width: 100%;
+}
+
 .game-status-metrics {
   display: flex;
   flex-wrap: wrap;

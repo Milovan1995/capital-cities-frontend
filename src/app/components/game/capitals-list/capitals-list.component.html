@@ -1,11 +1,20 @@
 <app-navbar></app-navbar>
-<div class="container" [formGroup]="form">
+<main class="container capitals-page" [formGroup]="form">
+  <div class="capitals-header">
+    <p class="page-eyebrow">{{ "explore-page.eyebrow" | translate }}</p>
+    <h1>{{ "explore-page.title" | translate }}</h1>
+    <p>{{ "explore-page.subtitle" | translate }}</p>
+  </div>
   <input
+    class="capital-search"
     type="text"
     formControlName="term"
     [placeholder]="'search-by-name' | translate"
   />
-  <ng-container *ngIf="!errorMessage">
+  <p *ngIf="isLoading" class="capitals-state" role="status">
+    {{ "explore-page.loading" | translate }}
+  </p>
+  <ng-container *ngIf="!isLoading && !errorMessage && capitals$().length > 0">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -25,7 +34,10 @@
       </tbody>
     </table>
   </ng-container>
+  <p *ngIf="!isLoading && !errorMessage && capitals$().length === 0" class="capitals-state">
+    {{ "explore-page.empty" | translate }}
+  </p>
   <ng-container *ngIf="errorMessage">
-    <h3>{{ errorMessage }}</h3>
+    <p class="capitals-state capitals-state--error" role="alert">{{ errorMessage }}</p>
   </ng-container>
-</div>
+</main>

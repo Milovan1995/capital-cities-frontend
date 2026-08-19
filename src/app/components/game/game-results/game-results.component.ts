@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-game-results',
@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class GameResultsComponent {
   @Input() score: number;
+  @Input() scoreSaveState: 'not-started' | 'pending' | 'saved' | 'failed' = 'not-started';
+  @Output() retrySave = new EventEmitter<void>();
 }

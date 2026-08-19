@@ -16,6 +16,8 @@ export class LoginComponent {
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   });
+  errorMessage?: string;
+  isSubmitting = false;
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -23,10 +25,13 @@ export class LoginComponent {
   ) {}
 
   login() {
+    this.errorMessage = undefined;
     if (this.form.invalid) {
-      alert(this._trans.instant('messages.enter-both-fields'));
+      this.form.markAllAsTouched();
+      this.errorMessage = this._trans.instant('messages.enter-both-fields');
       return;
     }
+    this.isSubmitting = true;
     this.auth.login(this.form.value).subscribe({
       next: (data: any) => {
         if (!!data.token) {
@@ -36,7 +41,8 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error(`Error:${error}`);
-        alert(error.message);
+        this.isSubmitting = false;
+        this.errorMessage = error?.error?.message ?? this._trans.instant('messages.login-failed');
       },
     });
   }

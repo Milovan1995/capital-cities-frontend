@@ -9,6 +9,7 @@ import { UserGamesComponent } from './user-games/user-games.component';
 import { UserHighscoresComponent } from './user-highscores/user-highscores.component';
 import { UserPlayComponent } from './user-play/user-play.component';
 import { UtilModule } from '../../util/util.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { UtilModule } from '../../util/util.module';
     UserHighscoresComponent,
     UserPlayComponent,
   ],
-  imports: [CommonModule, UserProfileRoutingModule, UtilModule],
+  imports: [CommonModule, UserProfileRoutingModule, UtilModule, TranslateModule],
   exports: [
     UserProfileComponent,
     AchievementsComponent,

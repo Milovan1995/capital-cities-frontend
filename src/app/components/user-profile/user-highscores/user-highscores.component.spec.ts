@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserHighscoresComponent } from './user-highscores.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('UserHighscoresComponent', () => {
   let component: UserHighscoresComponent;
@@ -8,7 +9,8 @@ describe('UserHighscoresComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserHighscoresComponent]
+      declarations: [UserHighscoresComponent],
+      imports: [TranslateModule.forRoot()]
     })
     .compileComponents();
     

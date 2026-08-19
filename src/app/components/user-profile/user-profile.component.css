@@ -1,23 +1,55 @@
 .userPage {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 70vh;
+  gap: 2rem;
+  min-height: 60vh;
+  padding-bottom: 3rem;
+}
+
+.profile-header {
+  align-self: stretch;
+}
+
+.page-eyebrow {
+  color: var(--secondTextColor);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.profile-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin: 0.35rem 0 0;
+}
+
+.profile-state {
+  background: var(--surface-color);
+  border: 1px dashed var(--surface-border-strong);
+  border-radius: 14px;
+  color: var(--subtleTextColor);
+  padding: 1rem;
+}
+
+.profile-state--error {
+  background: var(--errorSurface);
+  border-style: solid;
+  color: var(--errorText);
 }
 .smallerContainer{
     width: 90%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 .userContainer {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -30,9 +62,18 @@
 
 .statsCard {
   border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  box-shadow: var(--control-shadow);
   padding: 1rem;
   text-align: center;
   background-color: var(--surface-color);
+}
+
+@media (max-width: 900px) {
+  .userContainer,
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
 }
 
 #userBtn {

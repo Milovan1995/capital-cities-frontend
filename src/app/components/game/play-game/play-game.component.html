@@ -26,6 +26,13 @@
           gameSettings.timer
         }}</span>
       </h3>
+      <div class="game-progress" aria-live="polite">
+        {{ "game-play.progress" | translate }}
+        <strong>{{ currentQuestionNumber }} / {{ totalQuestions }}</strong>
+      </div>
+    </div>
+    <div *ngIf="isGameLoading" class="game-loading" role="status">
+      {{ "game-play.loading" | translate }}
     </div>
     <div *ngIf="currentCapital" class="capital-stage">
       <app-capital
@@ -36,7 +43,11 @@
   </ng-container>
   <ng-container *ngIf="gameSettings && isGameFinished">
     <div class="game-results-shell">
-      <app-game-results [score]="score"></app-game-results>
+      <app-game-results
+        [score]="score"
+        [scoreSaveState]="scoreSaveState"
+        (retrySave)="retrySaveScore()"
+      ></app-game-results>
       <button class="restart-button" (click)="onRestartGame()">
         {{ "play-again" | translate }}
       </button>

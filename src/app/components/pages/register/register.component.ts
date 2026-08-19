@@ -18,6 +18,8 @@ export class RegisterComponent {
     password: new FormControl(null, Validators.required),
     confirmPassword: new FormControl(null, Validators.required),
   });
+  errorMessage?: string;
+  isSubmitting = false;
 
   constructor(
     private auth: AuthService,
@@ -26,17 +28,20 @@ export class RegisterComponent {
   ) {}
 
   register() {
+    this.errorMessage = undefined;
     if (this.form.invalid) {
-      alert(this._trans.instant('messages.enter-all-fields'));
+      this.form.markAllAsTouched();
+      this.errorMessage = this._trans.instant('messages.enter-all-fields');
       return;
     }
     if (
       this.form.get('password')?.value !==
       this.form.get('confirmPassword')?.value
     ) {
-      alert(this._trans.instant('messages.passwords-dont-match'));
+      this.errorMessage = this._trans.instant('messages.passwords-dont-match');
       return;
     }
+    this.isSubmitting = true;
     this.auth
       .register({
         username: this.form.get('username').value,
@@ -50,9 +55,10 @@ export class RegisterComponent {
           }
         },
         error: (error) => {
-          alert(
-            this._trans.instant('messages.something-wrong') + error.message
-          );
+          this.isSubmitting = false;
+          this.errorMessage =
+            this._trans.instant('messages.something-wrong') +
+            (error?.error?.message ? ` ${error.error.message}` : '');
           console.error(error);
         },
       });

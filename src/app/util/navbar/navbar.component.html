@@ -15,7 +15,12 @@
     <ul class="nav navbar-nav navbar-links" *ngIf="navbarLinks.length > 0">
       @for (link of navbarLinks; track $index) {
         <li>
-          <a [routerLink]="link.route">{{ link.name | translate }}</a>
+          <a
+            [routerLink]="link.route"
+            routerLinkActive="is-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >{{ link.name | translate }}</a
+          >
         </li>
       }
     </ul>
@@ -54,18 +59,28 @@
       </label>
 
       <div class="language-options" aria-label="Language selector">
-        <img
+        <button
+          type="button"
+          class="language-option"
           src="/assets/images/748048_flag_montenegro_icon.png"
-          alt="MNE"
           (click)="switchLanguage(languages.me)"
-          [ngStyle]="{ opacity: language === languages.me ? 1 : 0.45 }"
-        />
-        <img
+          [attr.aria-pressed]="language === languages.me"
+          [class.is-selected]="language === languages.me"
+          [attr.aria-label]="'language.montenegrin' | translate"
+        >
+          <img src="/assets/images/748048_flag_montenegro_icon.png" alt="" aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          class="language-option"
           src="/assets/images/748050_flag_usa_icon.png"
-          alt="EN"
           (click)="switchLanguage(languages.en)"
-          [ngStyle]="{ opacity: language === languages.me ? 0.45 : 1 }"
-        />
+          [attr.aria-pressed]="language === languages.en"
+          [class.is-selected]="language === languages.en"
+          [attr.aria-label]="'language.english' | translate"
+        >
+          <img src="/assets/images/748050_flag_usa_icon.png" alt="" aria-hidden="true" />
+        </button>
       </div>
     </div>
   </div>

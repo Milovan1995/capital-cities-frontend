@@ -122,12 +122,18 @@
 
 .navbar-links a:hover,
 .navbar-links a:focus,
+.navbar-links a.is-active,
 .session-links a:hover,
 .session-links a:focus {
   background-color: var(--interactive-hover);
   border-color: var(--surface-border);
   color: var(--textColor) !important;
   text-decoration: none;
+}
+
+.navbar-links a.is-active {
+  background-color: var(--stat-surface);
+  color: var(--stat-text) !important;
 }
 
 .navbar-controls {
@@ -177,17 +183,30 @@
   padding: 0.4rem 0.6rem;
 }
 
-.language-options img {
+.language-option {
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: 50%;
-  cursor: pointer;
+  display: inline-flex;
+  padding: 0.15rem;
+}
+
+.language-option img {
+  border-radius: 50%;
   height: 2.6rem;
+  opacity: 0.45;
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
   width: 2.6rem;
 }
 
-.language-options img:hover {
+.language-option:hover img,
+.language-option.is-selected img {
+  opacity: 1;
+}
+
+.language-option:hover img {
   transform: translateY(-1px);
 }
 

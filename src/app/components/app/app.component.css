@@ -1,4 +1,11 @@
 .pageContainer {
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-height: 100vh;
+}
+
+app-footer {
+  display: block;
+  margin-top: auto;
 }

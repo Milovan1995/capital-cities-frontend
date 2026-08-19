@@ -1,2 +1,18 @@
-<h3>Game over!</h3>
-<h4>Your score: {{ score }}</h4>
+<p class="results-eyebrow">{{ "game-results.complete" | translate }}</p>
+<h3>{{ "game-results.title" | translate }}</h3>
+<div class="results-score">
+  <span>{{ "game-results.score" | translate }}</span>
+  <strong>{{ score }}</strong>
+</div>
+<p *ngIf="scoreSaveState === 'saved'" class="save-status save-status--success" role="status">
+  {{ "game-results.saved" | translate }}
+</p>
+<div *ngIf="scoreSaveState === 'pending'" class="save-status" role="status">
+  {{ "game-results.saving" | translate }}
+</div>
+<div *ngIf="scoreSaveState === 'failed'" class="save-status save-status--error" role="alert">
+  <span>{{ "game-results.save-failed" | translate }}</span>
+  <button type="button" class="btn btn-link" (click)="retrySave.emit()">
+    {{ "game-results.retry" | translate }}
+  </button>
+</div>

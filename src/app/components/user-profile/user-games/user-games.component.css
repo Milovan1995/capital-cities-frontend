@@ -1,3 +1,2 @@
-ul{
-    list-style: none;
-}
+.profile-card { background: var(--surface-elevated); border: 1px solid var(--surface-border); border-radius: 16px; padding: 1.25rem; }
+.profile-card p { color: var(--subtleTextColor); font-family: "Gill Sans", "Gill Sans MT", "Calibri", sans-serif; }

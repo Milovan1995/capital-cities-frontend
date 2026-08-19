@@ -9,7 +9,7 @@ import {
 import { Link } from '../../models/link';
 import { Capital } from '../../models/capital';
 import { CapitalCacheService } from '../../../services/capital-cache.service';
-import { catchError, of, Subject, takeUntil } from 'rxjs';
+import { catchError, finalize, of, Subject, takeUntil } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -31,6 +31,7 @@ export class CapitalsListComponent implements OnInit, OnDestroy {
   capitals$: Signal<Capital[]>;
   searchTerm$ = signal<string>('');
   errorMessage?: string;
+  isLoading = true;
   destroy$ = new Subject<void>();
 
   constructor(
@@ -39,6 +40,7 @@ export class CapitalsListComponent implements OnInit, OnDestroy {
   ) {
     this.capitalsList = toSignal(
       this.capitalCacheService.getCapitals().pipe(
+        finalize(() => (this.isLoading = false)),
         catchError(() => {
           this.errorMessage = this._trans.instant('error');
           return of([]);

@@ -90,6 +90,10 @@ body {
   min-height: 100vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--page-background);
   background-size: cover;
@@ -104,6 +108,14 @@ body {
   transition:
     background 0.35s ease,
     color 0.25s ease;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  line-height: 1.45;
 }
 
 *,
@@ -123,6 +135,11 @@ a {
     background-color 0.2s ease,
     color 0.2s ease,
     border-color 0.2s ease;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
 }
 
 a:hover {
@@ -175,4 +192,15 @@ select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--accent-soft);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

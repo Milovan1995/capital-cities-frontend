@@ -1,3 +1,5 @@
-<h3>Game History</h3>
-<p>Total games played: {{ stats?.total_games ?? 0 }}</p>
-<p>Last played: {{ (stats?.last_played | date) || 'No games yet' }}</p>
+<section class="profile-card">
+  <h3>{{ "profile-page.history" | translate }}</h3>
+  <p>{{ "profile-page.total-games" | translate }}: {{ stats?.total_games ?? 0 }}</p>
+  <p>{{ "profile-page.last-played" | translate }}: {{ (stats?.last_played | date) || ("profile-page.no-games" | translate) }}</p>
+</section>

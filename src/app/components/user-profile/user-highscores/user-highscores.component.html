@@ -1,3 +1,5 @@
-<h3>Personal Highscores:</h3>
-<p>Best score: {{ stats?.best_score ?? 0 }}</p>
-<p>Average score: {{ stats?.average_score ?? 0 }}</p>
+<section class="profile-card">
+  <h3>{{ "profile-page.personal-highscores" | translate }}</h3>
+  <p>{{ "profile-page.best-score" | translate }}: {{ stats?.best_score ?? 0 }}</p>
+  <p>{{ "profile-page.average-score" | translate }}: {{ stats?.average_score ?? 0 }}</p>
+</section>

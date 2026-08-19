@@ -44,7 +44,8 @@
     "enter-both-fields": "Enter both fields!",
     "enter-all-fields": "Enter all fields!",
     "passwords-dont-match": "Passwords do not match",
-    "something-wrong": "Something went wrong."
+    "something-wrong": "Something went wrong.",
+    "login-failed": "Login failed. Check your details and try again."
   },
   "sentences": {
     "guess-the-capital": "Guess the capital"
@@ -65,7 +66,55 @@
   "game-play": {
     "live-challenge": "Challenge live",
     "round-length": "Round length",
-    "region": "Region"
+    "region": "Region",
+    "question": "Your question",
+    "answer-hint": "Type the capital city and submit your answer.",
+    "answer-placeholder": "Enter capital city",
+    "submit-answer": "Submit answer",
+    "skip-hint": "Press Enter with an empty answer to skip.",
+    "progress": "Question",
+    "loading": "Loading the next challenge..."
+  },
+  "game-results": {
+    "complete": "Round complete",
+    "title": "Game over",
+    "score": "Your score",
+    "saved": "Score saved to your profile.",
+    "saving": "Saving your score...",
+    "save-failed": "Your score could not be saved.",
+    "retry": "Try again"
+  },
+  "highscores-page": {
+    "eyebrow": "Global leaderboard",
+    "title": "Highscores",
+    "subtitle": "See how players are performing across each round length.",
+    "duration": "Round length",
+    "loading": "Loading scores...",
+    "empty": "No scores have been recorded for this round yet.",
+    "points": "pts"
+  },
+  "explore-page": {
+    "eyebrow": "World atlas",
+    "title": "Explore capitals",
+    "subtitle": "Search the countries and capital cities included in the quiz.",
+    "loading": "Loading capitals...",
+    "empty": "No capitals match your search."
+  },
+  "language": {
+    "english": "English",
+    "montenegrin": "Montenegrin"
+  },
+  "profile-page": {
+    "eyebrow": "Your progress",
+    "welcome": "Welcome",
+    "loading": "Loading your profile...",
+    "total-games": "Total games",
+    "best-score": "Best score",
+    "average-score": "Average score",
+    "history": "Game history",
+    "last-played": "Last played",
+    "no-games": "No games yet",
+    "personal-highscores": "Personal highscores"
   },
   "regions": {
     "world": "World",

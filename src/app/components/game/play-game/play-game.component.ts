@@ -31,6 +31,13 @@ export class PlayGameComponent implements OnDestroy {
   private capitalSubscription?: Subscription;
   private countdownIntervalId?: ReturnType<typeof setInterval>;
   private gameRunId = 0;
+  totalQuestions = 0;
+
+  get currentQuestionNumber(): number {
+    return this.totalQuestions > 0
+      ? this.totalQuestions - this.capitals.length
+      : 0;
+  }
 
   constructor(
     private capitalService: CapitalService,
@@ -52,6 +59,7 @@ export class PlayGameComponent implements OnDestroy {
         next: (capitalsResponse: CapitalsResponse) => {
           if (runId !== this.gameRunId) return;
           this.capitals = [...capitalsResponse.capitals];
+          this.totalQuestions = this.capitals.length;
         },
         error: (error) => {
           if (runId !== this.gameRunId) return;
@@ -177,6 +185,7 @@ export class PlayGameComponent implements OnDestroy {
     this.score = 0;
     this.scoreSaveState = 'not-started';
     this.capitals = [];
+    this.totalQuestions = 0;
     this.currentCapital = undefined;
     this.gameSettings = { ...options };
     this.gameOptionsPicked = true;
@@ -191,6 +200,7 @@ export class PlayGameComponent implements OnDestroy {
     this.isGameFinished = false;
     this.score = 0;
     this.capitals = [];
+    this.totalQuestions = 0;
     this.currentCapital = undefined;
     this.gameSettings = undefined;
     this.errorMessage = undefined;

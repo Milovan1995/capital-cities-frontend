@@ -1,0 +1,51 @@
+.results-eyebrow {
+  color: var(--secondTextColor);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+:host h3 {
+  font-size: 3rem;
+  margin: 0.35rem 0 1.25rem;
+}
+
+.results-score {
+  align-items: center;
+  background: var(--stat-surface);
+  border-radius: 18px;
+  color: var(--stat-text);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+}
+
+.results-score span {
+  color: var(--inverseSubtleTextColor);
+}
+
+.results-score strong {
+  font-size: 3rem;
+}
+
+.save-status {
+  color: var(--subtleTextColor);
+  margin: 1rem 0 0;
+}
+
+.save-status--success {
+  color: var(--secondTextColor);
+}
+
+.save-status--error {
+  align-items: center;
+  background: var(--errorSurface);
+  border-radius: 12px;
+  color: var(--errorText);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+}

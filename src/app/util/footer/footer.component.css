@@ -1,8 +1,11 @@
 .copyright {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  border-top: 1px solid var(--surface-border);
+  color: var(--subtleTextColor);
+  margin-top: 3rem;
+  padding: 1.25rem 1rem;
+  position: static;
   text-align: center;
+  width: 100%;
 }
 .copyright small {
   font-family: cursive;
